@@ -1,11 +1,13 @@
 import './App.css'
-import Header from './header/inde'
+import Api from './components/api'
+import Header from './components/header/index'
 
 function App() {
 
   return (
     <>
     <Header />
+    <Api />
     </>
   )
 }
