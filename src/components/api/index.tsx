@@ -1,9 +1,9 @@
 import axios from 'axios';
 import "./apiTemplate.css"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from './input';
-import Checkbox from '@mui/material/Checkbox';
-import DocumentationTemplate from './documentationTemplate';
+import BasicTabs from './taps';
+
 
 
 const Api = () => {
@@ -11,14 +11,13 @@ const Api = () => {
     const [getUrl,setGetUrl] = useState()
     const [postUrl,setPostUrl] = useState()
     const [deleteUrl,setDeleteUrl] = useState()
-
+    const [putUrl,setPutUrl] = useState()
 
     const getData = async (url:any) => {
         try {
             const response = await axios.get(url);
             const data = response.data;
-            setData(data.todos[0])
-            console.log(data)
+            {data.length === undefined ? setData(data) : setData(data[0])}
         } catch (err) {
             console.error(err);
         }
@@ -26,44 +25,43 @@ const Api = () => {
 
     const genarateDocumentation = (e:any) => {
         e.preventDefault();
-        console.log(getUrl)
-        console.log(postUrl)
-        console.log(deleteUrl)
+        console.log(e.target.value)
         getData(getUrl)
     }
-
     
     return(
-        <section className='api-section'>
-            <h3>Enter your API Json URL</h3>
-
+        <main >
             <div className='api-inputs'>
-
-                <Input id={'GET'} url={setGetUrl}/>
+                <h2>Enter your API Json URL</h2>
+                <form action="" method="post" onSubmit={genarateDocumentation}>
+                <Input id={'GET'} url={setGetUrl} required={true}/>
                 <Input id={'POST'} url={setPostUrl}/>
+                <Input id={'PUT'} url={setPutUrl}/>
                 <Input id={'DELETE'} url={setDeleteUrl}/>
-                <button className='btn' onClick={genarateDocumentation} type="submit">Generate Documentation</button>
+                <button className='btn' type="submit">Generate Documentation</button>
+                </form>
+
+                <div className='api-inputs-nota'>
+                    <h1>Nota</h1>
+                    <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
+                    <button className='btn'>Mas Informacion aqui </button>
+                </div>
             </div>
-            { data ? 
-            <div className='parameters-section'>
-                <h3>Cuales parametros son requeridos?</h3>
-                <ul>
-                    
-                    {Object.keys(data).map((clave, index) => (
-                        <li key={index}>
-                            <strong>{clave}</strong>
-                            <Checkbox />
-                        </li>
-                    )) } 
+           
+            <section className='documentationSection'>
+                {
+                    data ?
+                    <BasicTabs
+                        data={data}
+                        getUrl={getUrl}
+                        postUrl={postUrl}
+                        putUrl={putUrl}
+                        deleteUrl={deleteUrl}
+                    />: <></>
+                }
                 
-                </ul>
-                <button className='btn'>Continuar</button>
-            </div> : <></> 
-            }
-            <div className='documentationSection'>
-                <DocumentationTemplate />
-            </div>
-        </section>
+            </section>
+        </main>
     )
 }
 

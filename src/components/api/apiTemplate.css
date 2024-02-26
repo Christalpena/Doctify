@@ -1,29 +1,45 @@
-.api-section{
+main{
     margin: auto;
     padding: 0 60px;
     gap: 30px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+form{
+    margin-bottom: 10px;
 }
 
 .api-inputs{
-    display: flex;
-    flex-direction: column;
     gap: 10px;
     width: 600px;
 }
+
+.api-inputs-nota{
+    background-color: #9c27b0;
+    padding: 2rem;
+    border-radius: 5px;
+    flex-direction: column;
+    margin: 0;
+
+}
+
+.api-inputs-nota h1, p{
+    margin: 0;
+}
 .api-inputs h3{
     padding: 10px;
-    outline: 2px solid red;
+    outline: 3px solid #9c27b0;
     border-radius: 5px;
     width: 100px;
     margin: 0;
 }
 
-.api-inputs div{
+.api-inputs  div{
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .api-inputs div input{
@@ -42,19 +58,52 @@
     color: white;
 }
 
-.parameters-section{
+
+.documentationSection{
+    flex-grow: 0.8;
     width: 600px;
-    max-width: 80ch;
+}
+.css-19kzrtu{
+    padding: 0;
 }
 
-.parameters-section ul{
-    padding: 0px;
-}
-
-.parameters-section > ul li{
+.endPoints div{
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    gap: 10px;
+}
+
+.endPoints div h4{
+    padding: 10px;
+    border-radius: 5px;
+    width: 70px;
+}
+
+.parameters-section ul li, .response-list ul li{
+    list-style: none;
+   
 }
 
 
+
+.css-j204z7-MuiFormControlLabel-root{
+    flex-direction: row-reverse;
+    margin: 0;
+}
+
+.response-list{
+    margin-top: 1rem;
+    background-color: #070F2B;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+table{
+    width: 100%;
+
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }

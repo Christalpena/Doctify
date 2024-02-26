@@ -11,7 +11,7 @@ const Input = (props:any) => {
     return(
         <div>
         <h3>{props.id}</h3>
-            <input type="text" name="" id={props.id} value={apiUrl} onChange={(e) => driveInputChange(e)} />
+            <input type="url" name="" id={props.id} value={apiUrl} onChange={(e) => driveInputChange(e)} required={props.required} placeholder={`${props.id} URL`}/>
         </div>
     )
 }
