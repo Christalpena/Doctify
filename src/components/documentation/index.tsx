@@ -1,8 +1,8 @@
 import axios from 'axios';
-import "./apiTemplate.css"
-import { useEffect, useState } from 'react';
-import Input from './input';
-import BasicTabs from './taps';
+import { useState } from 'react';
+import Input from '../elements/input';
+import BasicTabs from '../elements/taps';
+import "./documentationTemplate.css"
 
 
 

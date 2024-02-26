@@ -1,102 +1,16 @@
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { useEffect, useState } from 'react';
-
+import "./documentationTemplate.css"
+import { saveFields, iterateObjectTable, requiredParameters,iterateObject } from './data';
 
 const DocumentationTemplate = (props:any) => {
     const {data,getUrl,postUrl,deleteUrl,putUrl} = props
-    const [campos,setCampos] = useState({})
+    const [fields,setfields] = useState({})
     
-    const guardarCampos = (objeto:any) => {
-      const newCampos:any = {};
-      
-      const obtenerCampos = (objeto:any) => {
-        Object.keys(objeto).forEach((key) => {
-          if (typeof objeto[key] === 'object' && objeto[key] !== null) {
-            obtenerCampos(objeto[key]);
-          } else {
-            newCampos[key] = true;
-          }
-        });
-      };
-      
-      obtenerCampos(objeto);
-      setCampos(newCampos);
-    };
-  
-
-    const setRequerido = (campo: string, valor: boolean) => {
-      setCampos(prevState => ({ ...prevState, [campo]: valor }));
-    };
-
     useEffect(() => {
-      guardarCampos(data)
+      setfields(saveFields(data))
     },[data])
-
-
-    function recorrerObjeto(objeto: any,section:any,campos:any) {
-        putParameterRequired = campos[putParameter]
-        deleteParameterRequired = campos[deleteParameter]
-        return (
-          <ul>
-            {Object.keys(objeto).map((key, index) => {
-              if (typeof objeto[key] === 'object' && objeto[key] !== null) {
-                return (
-                  <li key={index}>
-                    <strong>{key} : </strong> 
-                    <span>&#123;</span>
-                    {recorrerObjeto(objeto[key],section,campos)}
-                    <span>&#125;</span>
-                  </li>
-                );
-              } else {
-                return (
-                  <li key={index}>
-                    {!section ?
-                    <li>
-                      <strong>"{key}" : <span>&#123;</span></strong> 
-                      <ul>
-                        <li>"type" : "{typeof objeto[key]}",</li>
-                        <li>
-                        <FormControlLabel control={<Checkbox defaultChecked={true} onChange={(e) => setRequerido(key, e.target.checked)} />} label="`requerido :" />
-                        </li>
-                      </ul> 
-                      <span>&#125; ,</span>
-                    </li>
-                    : 
-                      <li><strong>"{key}" : {typeof objeto[key] === 'number' ? objeto[key] : `"${objeto[key]}"` }</strong></li>
-                    }
-                  </li> 
-                );
-              
-              }
-            })}
-          </ul>
-        );
-    }
-
-    let putParameterRequired = true
-    let deleteParameterRequired = true
-    function recorrerObjetoTabla(objeto: any,campos:any) {
-      return Object.keys(objeto).map((key:any, index:any) => {
-              if (typeof objeto[key] === 'object' && objeto[key] !== null){
-                return recorrerObjetoTabla(objeto[key],campos);
-              } else{
-                return(
-                <tr key={index} >
-                  <th>{key}</th>
-                  <th>{typeof objeto[key]}</th>
-                  <th>{campos[key] === true ? 'Si' : 'No'}</th>
-                </tr>
-                )
-              }
-            }
-        );
-    }
     
-    
-    const putParameter:string = putUrl ? putUrl.slice(putUrl.lastIndexOf('/')+1 + 1) : ''
-    const deleteParameter:string = deleteUrl ? deleteUrl.slice(deleteUrl.lastIndexOf('/')+1 + 1) : ''
+    const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
 
     return(
         <section>
@@ -138,7 +52,7 @@ const DocumentationTemplate = (props:any) => {
                     <div >
                       <span>&#123;</span>
                     {
-                      recorrerObjeto(data,'',campos)
+                      iterateObject(data,'',fields,setfields)
                     }
                     <span>&#125;</span>
                     </div>
@@ -154,7 +68,7 @@ const DocumentationTemplate = (props:any) => {
                         <span>&#123;</span>
 
                             {
-                            recorrerObjeto(data,'get',campos)
+                            iterateObject(data,'get',fields,setfields)
                             }
                         <span>&#125;</span>
 
@@ -177,7 +91,7 @@ const DocumentationTemplate = (props:any) => {
                               </tr>
                             </thead>
                             <tbody>
-                            {recorrerObjetoTabla(data,campos)}
+                            {iterateObjectTable(data,fields)}
                             </tbody>
                           </table>
 
@@ -187,12 +101,12 @@ const DocumentationTemplate = (props:any) => {
                     { putUrl ?
                     <div >
                         <h2>PUT</h2>
-                        <strong>URL: </strong><span>{postUrl}</span>
+                        <strong>URL: </strong><span>{putUrl}</span>
                         <div>
                           <table>
                             <tbody>
                               <tr>
-                                <th>Campos</th>
+                                <th>fields</th>
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>
@@ -209,12 +123,12 @@ const DocumentationTemplate = (props:any) => {
                     { deleteUrl ?
                     <div >
                         <h2>DELETE</h2>
-                        <strong>URL: </strong><span>{postUrl}</span>
+                        <strong>URL: </strong><span>{deleteUrl}</span>
                         <div>
                           <table>
                             <tbody>
                               <tr>
-                                <th>Campos</th>
+                                <th>fields</th>
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>

@@ -1,5 +1,5 @@
 import './App.css'
-import Api from './components/api'
+import Api from './components/documentation'
 import Header from './components/header/index'
 
 function App() {
