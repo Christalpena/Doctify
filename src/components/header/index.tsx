@@ -1,6 +1,11 @@
 import "./header.css"
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const navigate = useNavigate();
+    const nav = (route:string) => {
+        navigate(`/${route}`)
+    }
     return(
         <header>
             <nav>
@@ -9,8 +14,8 @@ const Header = () => {
                         <img src="Doctify.png" alt="" />
                         <h1>DOCTIFY</h1>
                     </li>
-                    <li>Documentation</li>
-                    <li>Get started</li>
+                    <li onClick={() => nav('')}>Documentacion</li>
+                    <li onClick={() => nav('generar-documentacion')} id="start">Comenzar</li>
                     <li>Github</li>
                 </ul>
             </nav>

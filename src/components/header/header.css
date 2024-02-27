@@ -1,5 +1,5 @@
 header{
-    background-color: #070F2B;
+    background-color: var(--main-color);
     padding: 0 100px;
     box-shadow: 0px 0px 5px 2px #070f2b62;
     margin-bottom: 2rem;
@@ -17,6 +17,10 @@ header{
     flex-grow: 0.5;
 }
 
+.header-logo h1{
+    font-size: xx-large;
+}
+
 header ul {
     display: flex;
     margin: 0;
@@ -27,4 +31,5 @@ header ul {
 
 header ul li{
     list-style: none;
+    cursor: pointer;
 }

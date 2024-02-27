@@ -30,36 +30,38 @@ const Api = () => {
     return(
         <main >
             <div className='api-inputs'>
-                <h2>Enter your API Json URL</h2>
+                <h2>API JSON URLs</h2>
                 <form action="" method="post" onSubmit={genarateDocumentation}>
                 <Input id={'GET'} url={setGetUrl} required={true}/>
                 <Input id={'POST'} url={setPostUrl}/>
                 <Input id={'PUT'} url={setPutUrl}/>
                 <Input id={'DELETE'} url={setDeleteUrl}/>
-                <button className='btn' type="submit">Generate Documentation</button>
+                <button className='btn' type="submit">Generar Documentacion</button>
                 </form>
 
                 <div className='api-inputs-nota'>
                     <h1>Nota</h1>
                     <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
-                    <button className='btn'>Mas Informacion aqui </button>
+                    <a>¡Mas Informacion aqui!</a>
                 </div>
 
             </div>
            
+            { data ?
             <section className='documentationSection'>
-                {
-                    data ?
-                    <BasicTabs
-                        data={data}
-                        getUrl={getUrl}
-                        postUrl={postUrl}
-                        putUrl={putUrl}
-                        deleteUrl={deleteUrl}
-                    />: <></>
-                }
-                
-            </section>
+            {
+                data ?
+                <BasicTabs
+                    data={data}
+                    getUrl={getUrl}
+                    postUrl={postUrl}
+                    putUrl={putUrl}
+                    deleteUrl={deleteUrl}
+                />: <></>
+            }
+            
+            </section> : <></>
+            }
         </main>
     )
 }

@@ -14,10 +14,11 @@ form{
 .api-inputs{
     gap: 10px;
     width: 600px;
+    transition: all 2s ease-in;
 }
 
 .api-inputs-nota{
-    background-color: #9c27b0;
+    background-color: var(--secondary-color);
     padding: 2rem;
     border-radius: 5px;
     flex-direction: column;
@@ -30,7 +31,7 @@ form{
 }
 .api-inputs h3{
     padding: 10px;
-    outline: 3px solid #9c27b0;
+    outline: 3px solid #9290C3;
     border-radius: 5px;
     width: 100px;
     margin: 0;
@@ -54,15 +55,16 @@ form{
     margin-top: 10px;
     border-radius: 5px;
     border-color: transparent;
-    background-color: #9290C3 ;
-    color: white;
+    background-color: var(--primary-color) ;
+    color: var(--secondary-text-color);
+    font-size: small;
 }
 
 
 .documentationSection{
     flex-grow: 0.8;
     width: 600px;
-    border:  2px solid #070F2B;
+    box-shadow: 0px 0px 6px 2px #cdc9c2;
     border-radius: 5px;
 }
 .fieldsUl > ul{
@@ -97,12 +99,12 @@ form{
     margin-right: 0 !important;
 }
 .css-1a4cg4j-MuiButtonBase-root-MuiTab-root{
-    color: white !important;
+    color: var(--text-color) !important;
 }
 
 .response-list{
     margin-top: 1rem;
-    background-color: #070F2B;
+    background-color: var(--main-color);
     padding: 2rem;
     border-radius: 20px;
 }
@@ -130,5 +132,5 @@ td, th {
 /*PRINT SECTION*/
 
 .print-document .response-list{
-    color: white;
+    color: var(--text-color);
 }
