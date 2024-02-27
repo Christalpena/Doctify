@@ -4,8 +4,6 @@ import Input from '../elements/input';
 import BasicTabs from '../elements/taps';
 import "./documentationTemplate.css"
 
-
-
 const Api = () => {
     const [data,setData] = useState()
     const [getUrl,setGetUrl] = useState()
@@ -24,11 +22,11 @@ const Api = () => {
     }
 
     const genarateDocumentation = (e:any) => {
-        e.preventDefault();
-        console.log(e.target.value)
+        e.preventDefault()
+        console.log(getUrl)
         getData(getUrl)
     }
-    
+
     return(
         <main >
             <div className='api-inputs'>
@@ -46,6 +44,7 @@ const Api = () => {
                     <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
                     <button className='btn'>Mas Informacion aqui </button>
                 </div>
+
             </div>
            
             <section className='documentationSection'>

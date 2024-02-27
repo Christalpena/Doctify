@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "./documentationTemplate.css"
 import { saveFields, iterateObjectTable, requiredParameters,iterateObject } from './data';
+import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
+  
     const {data,getUrl,postUrl,deleteUrl,putUrl} = props
     const [fields,setfields] = useState({})
     
@@ -12,15 +14,23 @@ const DocumentationTemplate = (props:any) => {
     
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
 
+    const ref = useRef<HTMLDivElement>();
+
     return(
-        <section>
-            <h2>API DOCUMENTATION</h2>
+        <section  >
+          <ReactToPrint
+              bodyClass="print-document"
+              content={() => ref.current}
+              trigger={() => (
+                  <button className='btn'>Generar</button>
+              )}/>
+          <div ref={ref}>
             <div>
 
-            </div>
-            <div>
-                <h3>Base URL</h3>
-                {getUrl}
+              <h2>API DOCUMENTATION</h2>
+
+              <h3>Base URL</h3>
+              {getUrl}
             </div>
             <hr />
             <div className='endPoints'>
@@ -46,14 +56,16 @@ const DocumentationTemplate = (props:any) => {
                 
             </div>
             <hr />
-            <div className='parameters-section'>
+            <div className='fields-section'>
                 <h3>Campos</h3>
 
-                    <div >
+                    <div className='fieldsUl' >
                       <span>&#123;</span>
+                    <ul>
                     {
                       iterateObject(data,'',fields,setfields)
                     }
+                    </ul>
                     <span>&#125;</span>
                     </div>
             </div> 
@@ -144,6 +156,7 @@ const DocumentationTemplate = (props:any) => {
                     </div> : <></>}
                 </div>
             </section>
+          </div>
         </section>
     )
 }

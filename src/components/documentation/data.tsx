@@ -27,40 +27,41 @@ const setRequired = (field: string, valor: boolean,setfields: any) => {
 export function iterateObject(data: any,section:string,campos:any,setCampos:any) {
 
     return (
-      <ul>
+      <li>
         {Object.keys(data).map((key, index) => {
           if (typeof data[key] === 'object' && data[key] !== null) {
             return (
-              <li key={index}>
-                <strong>{key} : </strong> 
-                <span>&#123;</span>
+              <ul key={index}>
+                <li>{key} : </li> 
+                <li>&#123;</li>
                 {iterateObject(data[key],section,campos,setCampos)}
-                <span>&#125;</span>
-              </li>
+                <li>&#125;</li>
+              </ul>
             );
           } else {
             return (
-              <li key={index}>
+                <ul key={index} className='p'>
                 {!section ?
-                <li>
-                  <strong>"{key}" : <span>&#123;</span></strong> 
-                  <ul>
-                    <li>"type" : "{typeof data[key]}",</li>
-                    <li>
-                    <FormControlLabel control={<Checkbox defaultChecked={true} onChange={(e) => setRequired(key, e.target.checked,setCampos)} />} label="`requerido :" />
+
+                  <>
+                    <li><strong>"{key}" :</strong> <span>&#123;</span></li> 
+                    <li className='fields'><strong>"type" :</strong> "{typeof data[key]}",</li>
+                    <li className='fields'>
+                    <FormControlLabel control={<Checkbox defaultChecked={true} onChange={(e) => setRequired(key, e.target.checked,setCampos)} />} label=<strong>"Requerido" :</strong> />
                     </li>
-                  </ul> 
-                  <span>&#125; ,</span>
-                </li>
+                    <li>&#125; ,</li>
+
+                  </> 
                 : 
-                  <li><strong>"{key}" : {typeof data[key] === 'number' ? data[key] : `"${data[key]}"` }</strong></li>
-                }
-              </li> 
+                  <li key={index}><strong>"{key}" : </strong> {typeof data[key] === 'number' ? data[key] : `"${data[key]}"` }</li> }
+                </ul>
+                
+
             );
           
           }
         })}
-      </ul>
+      </li>
     );
 }
 
