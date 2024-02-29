@@ -1,10 +1,9 @@
 main{
     margin: auto;
-    padding: 0 100px;
+    padding: 0 100px 50px 100px;
     gap: 30px;
     display: flex;
     justify-content:space-between;
-    flex-wrap: wrap;
 }
 
 form{
@@ -28,6 +27,19 @@ form{
 
 .api-inputs-nota h1, p{
     margin: 0;
+}
+
+.get{
+    color: green;
+}
+.post{
+    color: blue;
+}
+.delete{
+    color: red;
+}
+.put{
+    color: orange;
 }
 .api-inputs h3{
     padding: 10px;
@@ -58,14 +70,18 @@ form{
     background-color: var(--primary-color) ;
     color: var(--secondary-text-color);
     font-size: small;
+    cursor: pointer;
 }
-
 
 .documentationSection{
     flex-grow: 0.8;
     width: 600px;
-    box-shadow: 0px 0px 6px 2px #cdc9c2;
+    box-shadow: 0px 0px 6px 2px #cdc9c244;
     border-radius: 5px;
+}
+
+.title{
+    color: var(--main-color);
 }
 .fieldsUl > ul{
     padding: 0;
@@ -87,10 +103,7 @@ form{
 
 .fields-section ul li, .response-list ul li{
     list-style: none;
-   
 }
-
-
 
 .css-j204z7-MuiFormControlLabel-root{
     flex-direction: row-reverse;
@@ -101,16 +114,20 @@ form{
 .css-1a4cg4j-MuiButtonBase-root-MuiTab-root{
     color: var(--text-color) !important;
 }
-
+.response-container{
+    margin-bottom: 50px;
+}
 .response-list{
     margin-top: 1rem;
-    background-color: var(--main-color);
+    background-color: rgba(156, 156, 156, 0.194);
     padding: 2rem;
     border-radius: 20px;
+    list-style: none;
 }
 
 table{
     width: 100%;
+    margin-top:20px;
 
 }
 
@@ -119,6 +136,7 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+
 
 .fields{
     padding-left: 40px;
@@ -133,4 +151,15 @@ td, th {
 
 .print-document .response-list{
     color: var(--text-color);
+}
+
+@media screen and (max-width: 1230px){
+    main{
+        flex-wrap: wrap;
+    }
+
+    .api-inputs, .documentationSection{
+        width: 100%;
+
+    }
 }

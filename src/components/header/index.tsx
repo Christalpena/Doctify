@@ -14,8 +14,6 @@ const Header = () => {
                         <img src="Doctify.png" alt="" />
                         <h1>DOCTIFY</h1>
                     </li>
-                    <li onClick={() => nav('')}>Documentacion</li>
-                    <li onClick={() => nav('generar-documentacion')} id="start">Comenzar</li>
                     <li>Github</li>
                 </ul>
             </nav>

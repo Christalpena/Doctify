@@ -27,7 +27,7 @@ const DocumentationTemplate = (props:any) => {
           <div ref={ref}>
             <div>
 
-              <h2>API DOCUMENTATION</h2>
+              <h2 className='title'>API DOCUMENTATION</h2>
 
               <h3>Base URL</h3>
               {getUrl}
@@ -37,19 +37,19 @@ const DocumentationTemplate = (props:any) => {
                 <h3>EndPoints</h3>
                 <div>
                 { getUrl ? 
-                    <h4 style={{outline:'2px solid green'}}>GET</h4>
+                    <h4 className='get' style={{outline:'2px solid'}}>GET</h4>
                 : <></> 
                 }
                 { postUrl ? 
-                    <h4 style={{outline:'2px solid blue'}}>POST</h4>
+                    <h4 className='post' style={{outline:'2px solid'}}>POST</h4>
                 : <></> 
                 }
                 { deleteUrl ? 
-                    <h4 style={{outline:'2px solid red'}}>DELETE</h4>
+                    <h4 className='delete' style={{outline:'2px solid'}}>DELETE</h4>
                 : <></> 
                 }
                 {  putUrl ? 
-                    <h4 style={{outline:'2px solid orange'}}>PUT</h4>
+                    <h4 className='put' style={{outline:'2px solid'}}>PUT</h4>
                 : <></> 
                 }
                 </div>
@@ -73,8 +73,8 @@ const DocumentationTemplate = (props:any) => {
             <section>
                 <h3>Responses</h3>  
                 <div>
-                    <div>
-                        <h2>GET</h2>
+                    <div className='response-container'>
+                        <h2 className='get'>GET</h2>
                         <strong>URL: </strong><span>{getUrl}</span>
                         <div className='response-list'>
                         <span>&#123;</span>
@@ -86,10 +86,10 @@ const DocumentationTemplate = (props:any) => {
 
                         </div>
                     </div>
-
                     { postUrl ?
-                    <div >
-                        <h2>POST</h2>
+                    <div className='response-container' >
+                        <hr />
+                        <h2 className='post'>POST</h2>
                         <strong>URL: </strong><span>{postUrl}</span>
                         <h3>REQUEST BODY</h3>
 
@@ -111,14 +111,15 @@ const DocumentationTemplate = (props:any) => {
                     </div> : <></>}
 
                     { putUrl ?
-                    <div >
-                        <h2>PUT</h2>
+                    <div className='response-container' >
+                        <hr />
+                        <h2 className='put'>PUT</h2>
                         <strong>URL: </strong><span>{putUrl}</span>
                         <div>
                           <table>
                             <tbody>
                               <tr>
-                                <th>fields</th>
+                                <th>Campos</th>
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>
@@ -133,14 +134,16 @@ const DocumentationTemplate = (props:any) => {
                         </div>
                     </div> : <></>}
                     { deleteUrl ?
-                    <div >
-                        <h2>DELETE</h2>
+                    
+                    <div className='response-container' >
+                        <hr />
+                        <h2 className='delete'>DELETE</h2>
                         <strong>URL: </strong><span>{deleteUrl}</span>
                         <div>
                           <table>
                             <tbody>
                               <tr>
-                                <th>fields</th>
+                                <th>Campos</th>
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>
