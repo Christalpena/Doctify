@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Input from '../elements/input';
 import BasicTabs from '../elements/taps';
 import "./documentationTemplate.css"
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Api = (props:any) => {
     const {fields, setFields} = props
@@ -12,11 +14,14 @@ const Api = (props:any) => {
     const [deleteUrl,setDeleteUrl] = useState()
     const [putUrl,setPutUrl] = useState()
 
+    const notify = () => toast("Documentacion Generada!");
+
     const getData = async (url:any) => {
         try {
             const response = await axios.get(url);
             const data = response.data;
             {data.length === undefined ? setData(data) : setData(data[0])}
+            notify()
         } catch (err) {
             console.error(err);
         }
@@ -65,6 +70,7 @@ const Api = (props:any) => {
             
             </section> : <></>
             }
+            <ToastContainer />
         </main>
     )
 }

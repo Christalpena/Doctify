@@ -1,10 +1,15 @@
 import { requiredParameters } from "../documentation/data";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ReadMe = (props:any) => {
     const {data,getUrl,postUrl,deleteUrl,putUrl,fields} = props
 
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
     console.log(putUrl)
+
+    const notify = () => toast("Copiado al clickBoard!");
+
 
     const recorrer = (data: any, fields: any, endPoint: string): JSX.Element => {
       return ( 
@@ -30,10 +35,24 @@ const ReadMe = (props:any) => {
         </>
     );
    }
+   const handleCopyButtonClick = () => {
+    const readmeContent = document.getElementById('readme-content');
+    if (readmeContent) {
+        const range = document.createRange();
+        range.selectNode(readmeContent);
+        window.getSelection()?.removeAllRanges();
+        window.getSelection()?.addRange(range);
+        document.execCommand('copy');
+        window.getSelection()?.removeAllRanges();
+        notify()
+    }
+}  
   
 
     return(
         <section>
+          <button className="btn" onClick={handleCopyButtonClick}>Copiar</button>
+          <div id="readme-content" >
             <h1> # DOCUMENTACION DE API </h1> 
             
             <h3>### URL Base</h3> 
@@ -42,7 +61,7 @@ const ReadMe = (props:any) => {
             <h4>#### GET </h4>
             <p>##### GetUrl: {getUrl}</p> <br />
 
-            <div>
+            <div id="readme-content">
               | Campo | Tipo | Requerido | <br/>
               | :--- | :---: | ---: |
               {recorrer(data,fields,'get')} 
@@ -84,6 +103,8 @@ const ReadMe = (props:any) => {
 
             }
 
+        </div>
+        <ToastContainer />    
         </section>
     );
 }
