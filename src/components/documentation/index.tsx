@@ -7,14 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const Api = (props:any) => {
-    const {fields, setFields} = props
-    const [data,setData] = useState()
+    const {fields, setFields,data,setData} = props
     const [getUrl,setGetUrl] = useState()
     const [postUrl,setPostUrl] = useState()
     const [deleteUrl,setDeleteUrl] = useState()
     const [putUrl,setPutUrl] = useState()
 
     const notify = () => toast("Documentacion Generada!");
+
 
     const getData = async (url:any) => {
         try {

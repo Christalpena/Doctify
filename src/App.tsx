@@ -5,6 +5,7 @@ import Header from './components/header/index'
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 function App() {
   const [fields,setFields] = useState({})
+  const [data,setData] = useState()
 
   return (
     <BrowserRouter>
@@ -15,6 +16,8 @@ function App() {
           <Api
           fields={fields}
           setFields={setFields}
+          data={data}
+          setData={setData}
           />
         }></Route>
       </Routes>

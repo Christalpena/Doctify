@@ -62,7 +62,7 @@ const ReadMe = (props:any) => {
             <p>##### GetUrl: {getUrl}</p> <br />
 
             <div id="readme-content">
-              | Campo | Tipo | Requerido | <br/>
+              | Campo | Tipo | Data | <br/>
               | :--- | :---: | ---: |
               {recorrer(data,fields,'get')} 
             </div>
@@ -72,7 +72,7 @@ const ReadMe = (props:any) => {
               <h4>#### POST</h4>
               <p>##### PostUrl: {postUrl}</p> <br />
 
-              | Campo | Tipo | Data | <br/>
+              | Campo | Tipo | Requerido | <br/>
               | :--- | :---: | ---: |
               {recorrer(data,fields,'')} 
               </div> : <></>

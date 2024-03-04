@@ -6,11 +6,7 @@ import ReactToPrint from "react-to-print";
 const DocumentationTemplate = (props:any) => {
   
     const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields} = props
-    
-    useEffect(() => {
-      setFields(saveFields(data))
-    },[data])
-    
+
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
 
     const ref = useRef<HTMLDivElement>();

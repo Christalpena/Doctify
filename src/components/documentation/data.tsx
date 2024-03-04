@@ -25,7 +25,7 @@ const setRequired = (field: string, valor: boolean,setfields: any) => {
 
 
 
-export function iterateObject(data: any,section:string,campos:any,setCampos:any) {
+export function iterateObject(data: any,section:string,fields:any,setFields:any) {
 
     return (
       <li>
@@ -35,7 +35,7 @@ export function iterateObject(data: any,section:string,campos:any,setCampos:any)
               <ul key={index}>
                 <li>{key} : </li> 
                 <li>&#123;</li>
-                {iterateObject(data[key],section,campos,setCampos)}
+                {iterateObject(data[key],section,fields,setFields)}
                 <li>&#125;</li>
               </ul>
             );
@@ -48,7 +48,7 @@ export function iterateObject(data: any,section:string,campos:any,setCampos:any)
                     <li><strong>"{key}" :</strong> <span>&#123;</span></li> 
                     <li className='fields'><strong>"type" :</strong> "{typeof data[key]}",</li>
                     <li className='fields'>
-                    <FormControlLabel control={<Checkbox defaultChecked={true} onChange={(e) => setRequired(key, e.target.checked,setCampos)} />} label=<strong>"Requerido" :</strong> />
+                    <FormControlLabel control={<Checkbox defaultChecked={fields[key]} onChange={(e) => setRequired(key, e.target.checked,setFields)} />} label=<strong>"Requerido" :</strong> />
                     </li>
                     <li>&#125; ,</li>
 
