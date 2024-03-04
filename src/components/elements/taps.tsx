@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DocumentationTemplate from '../documentation/documentationTemplate';
+import ReadMe from '../readme';
 
 interface TabPanelProps {
   children?: ReactNode;
@@ -40,8 +41,8 @@ function a11yProps(index: number) {
 
 export default function BasicTabs(props:any) {
   const [value, setValue] = useState(0);
-  const {data,getUrl,postUrl,deleteUrl,putUrl} = props
-
+  const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields} = props
+  
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -52,7 +53,7 @@ export default function BasicTabs(props:any) {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"   textColor="secondary"
         indicatorColor="secondary">
           <Tab label="PDF" {...a11yProps(0)} />
-          <Tab label=".gitignore" {...a11yProps(1)} />
+          <Tab label="README" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -62,13 +63,19 @@ export default function BasicTabs(props:any) {
             putUrl={putUrl}
             postUrl={postUrl}
             deleteUrl={deleteUrl}
+            fields={fields}
+            setFields={setFields}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
+        <ReadMe
+          data={data}
+          getUrl={getUrl}
+          putUrl={putUrl}
+          postUrl={postUrl}
+          deleteUrl={deleteUrl}
+          fields={fields}
+        />
       </CustomTabPanel>
     </Box>
   );

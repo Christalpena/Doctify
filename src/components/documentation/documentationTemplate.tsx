@@ -5,11 +5,10 @@ import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
   
-    const {data,getUrl,postUrl,deleteUrl,putUrl} = props
-    const [fields,setfields] = useState({})
+    const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields} = props
     
     useEffect(() => {
-      setfields(saveFields(data))
+      setFields(saveFields(data))
     },[data])
     
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
@@ -24,7 +23,7 @@ const DocumentationTemplate = (props:any) => {
               trigger={() => (
                   <button className='btn'>Generar</button>
               )}/>
-          <div ref={ref}>
+          <div ref={ref} id='content'>
             <div>
 
               <h2 className='title'>API DOCUMENTATION</h2>
@@ -63,7 +62,7 @@ const DocumentationTemplate = (props:any) => {
                       <span>&#123;</span>
                     <ul>
                     {
-                      iterateObject(data,'',fields,setfields)
+                      iterateObject(data,'',fields,setFields)
                     }
                     </ul>
                     <span>&#125;</span>
@@ -80,7 +79,7 @@ const DocumentationTemplate = (props:any) => {
                         <span>&#123;</span>
 
                             {
-                            iterateObject(data,'get',fields,setfields)
+                            iterateObject(data,'get',fields,setFields)
                             }
                         <span>&#125;</span>
 

@@ -4,7 +4,8 @@ import Input from '../elements/input';
 import BasicTabs from '../elements/taps';
 import "./documentationTemplate.css"
 
-const Api = () => {
+const Api = (props:any) => {
+    const {fields, setFields} = props
     const [data,setData] = useState()
     const [getUrl,setGetUrl] = useState()
     const [postUrl,setPostUrl] = useState()
@@ -57,6 +58,8 @@ const Api = () => {
                     postUrl={postUrl}
                     putUrl={putUrl}
                     deleteUrl={deleteUrl}
+                    fields={fields}
+                    setFields={setFields}
                 />: <></>
             }
             

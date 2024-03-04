@@ -1,21 +1,22 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export function iterateObjectTable(data: any,fields:any) {
-  return Object.keys(data).map((key:any, index:any) => {
-          if (typeof data[key] === 'object' && data[key] !== null){
-            return iterateObjectTable(data[key],fields);
-          } else{
-            return(
-            <tr key={index} >
-              <th>{key}</th>
-              <th>{typeof data[key]}</th>
-              <th>{fields[key] === true ? 'Si' : 'No'}</th>
-            </tr>
-            )
-          }
-        }
-    );
+export function iterateObjectTable(data: any,fields:any): JSX.Element {
+  return (
+    <>
+    {Object.keys(data).map((key:any, index:any) => {
+      if (typeof data[key] === 'object' && data[key] !== null){
+        return iterateObjectTable(data[key],fields);
+      } else{
+        return(
+        <tr key={index} >
+          <td>{key}</td>
+          <td>{typeof data[key]}</td>
+          <td>{fields[key] === true ? 'Si' : 'No'}</td>
+        </tr>
+        )
+      }})}
+    </>);
 }
 
 const setRequired = (field: string, valor: boolean,setfields: any) => {
