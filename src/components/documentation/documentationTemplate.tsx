@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import "./documentationTemplate.css"
-import { saveFields, iterateObjectTable, requiredParameters,iterateObject } from './data';
+import { iterateObjectTable, requiredParameters,iterateObject } from './data';
 import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
@@ -9,7 +9,7 @@ const DocumentationTemplate = (props:any) => {
 
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
 
-    const ref = useRef<HTMLDivElement>();
+    const ref:any = useRef<HTMLDivElement>();
 
     return(
         <section  >

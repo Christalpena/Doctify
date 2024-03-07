@@ -6,6 +6,9 @@ import "./documentationTemplate.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import ReportProblemTwoToneIcon from '@mui/icons-material/ReportProblemTwoTone';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 
 const Api = (props:any) => {
     const {fields, setFields,data,setData} = props
@@ -31,7 +34,7 @@ const Api = (props:any) => {
             {dataPath ? setData(data[dataPath][0]) : data.length === undefined ? setData(data) : setData(data[0])};
             await delay(100)
             notify();
-        } catch (err) {
+        } catch (err:any) {
             setData('')
             setError(err)
         };
@@ -49,7 +52,15 @@ const Api = (props:any) => {
                 <h2>API JSON URLs</h2>
                 <form action="" method="post" onSubmit={genarateDocumentation}>
                 <Input type={"url"} id={'GET'} url={setGetUrl} required={true}/>
-                <Input type={"text"} id={"PATH"} url={setPath} />
+                <div className='path-input'>
+                    <Input type={"text"} id={"PATH"} url={setPath} />
+
+                    <Tooltip title="Dirección o ubicación donde se encuentra la data.">
+                        <IconButton>
+                            <ErrorTwoToneIcon color='success' />
+                        </IconButton>
+                    </Tooltip>
+                </div>
                 <Input type={"url"} id={'POST'} url={setPostUrl}/>
                 <Input type={"url"} id={'PUT'} url={setPutUrl}/>
                 <Input type={"url"} id={'DELETE'} url={setDeleteUrl}/>
@@ -74,7 +85,7 @@ const Api = (props:any) => {
                     deleteUrl={deleteUrl}
                     fields={fields}
                     setFields={setFields}
-                />:
+                />
             </section> : 
             error ? 
             <section className='errorSection'>
@@ -82,7 +93,7 @@ const Api = (props:any) => {
                     <h1>Hay algun error en la URL por davor revisela</h1>
                     <ReportProblemTwoToneIcon
                     color='error'
-                    fontSize='10rem'
+                    fontSize='large'
                     className='error__icon'
                     />
                 </div>

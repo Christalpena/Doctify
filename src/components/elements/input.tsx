@@ -11,7 +11,7 @@ const Input = (props:any) => {
     return(
         <div>
         <h3>{props.id}</h3>
-            <input type={props.type} name="" id={props.id} value={apiUrl} onChange={(e) => driveInputChange(e)} required={props.required} placeholder={`${props.id} URL`}/>
+            <input title="This is the text of the tooltip" type={props.type} name="" id={props.id} value={apiUrl} onChange={(e) => driveInputChange(e)} required={props.required} placeholder={`${props.id} URL`}/>
         </div>
     )
 }
