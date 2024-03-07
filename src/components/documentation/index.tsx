@@ -5,43 +5,54 @@ import BasicTabs from '../elements/taps';
 import "./documentationTemplate.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import ReportProblemTwoToneIcon from '@mui/icons-material/ReportProblemTwoTone';
 
 const Api = (props:any) => {
     const {fields, setFields,data,setData} = props
-    const [getUrl,setGetUrl] = useState()
-    const [postUrl,setPostUrl] = useState()
-    const [deleteUrl,setDeleteUrl] = useState()
-    const [putUrl,setPutUrl] = useState()
+    const [getUrl,setGetUrl] = useState();
+    const [postUrl,setPostUrl] = useState();
+    const [deleteUrl,setDeleteUrl] = useState();
+    const [putUrl,setPutUrl] = useState();
+    const [path,setPath] = useState();
+    const [error,setError] = useState();
 
+    const delay = (ms:number) => new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+      
     const notify = () => toast("Documentacion Generada!");
 
 
-    const getData = async (url:any) => {
+    const getData = async (url:any,dataPath:any) => {
         try {
             const response = await axios.get(url);
-            const data = response.data;
-            {data.length === undefined ? setData(data) : setData(data[0])}
-            notify()
+            let data = response.data;
+            console.log(data)
+            {dataPath ? setData(data[dataPath][0]) : data.length === undefined ? setData(data) : setData(data[0])};
+            await delay(100)
+            notify();
         } catch (err) {
-            console.error(err);
-        }
-    }
+            setData('')
+            setError(err)
+        };
+    };
 
     const genarateDocumentation = (e:any) => {
-        e.preventDefault()
-        console.log(getUrl)
-        getData(getUrl)
-    }
+        e.preventDefault();
+        getData(getUrl,path);
+    };
 
     return(
         <main >
-            <div className='api-inputs'>
+        <section className='home'>
+            <section className='api-inputs'>
                 <h2>API JSON URLs</h2>
                 <form action="" method="post" onSubmit={genarateDocumentation}>
-                <Input id={'GET'} url={setGetUrl} required={true}/>
-                <Input id={'POST'} url={setPostUrl}/>
-                <Input id={'PUT'} url={setPutUrl}/>
-                <Input id={'DELETE'} url={setDeleteUrl}/>
+                <Input type={"url"} id={'GET'} url={setGetUrl} required={true}/>
+                <Input type={"text"} id={"PATH"} url={setPath} />
+                <Input type={"url"} id={'POST'} url={setPostUrl}/>
+                <Input type={"url"} id={'PUT'} url={setPutUrl}/>
+                <Input type={"url"} id={'DELETE'} url={setDeleteUrl}/>
                 <button className='btn' type="submit">Generar Documentacion</button>
                 </form>
 
@@ -51,12 +62,10 @@ const Api = (props:any) => {
                     <a>¡Mas Informacion aqui!</a>
                 </div>
 
-            </div>
+            </section>
            
             { data ?
             <section className='documentationSection'>
-            {
-                data ?
                 <BasicTabs
                     data={data}
                     getUrl={getUrl}
@@ -65,12 +74,22 @@ const Api = (props:any) => {
                     deleteUrl={deleteUrl}
                     fields={fields}
                     setFields={setFields}
-                />: <></>
+                />:
+            </section> : 
+            error ? 
+            <section className='errorSection'>
+                <div>
+                    <h1>Hay algun error en la URL por davor revisela</h1>
+                    <ReportProblemTwoToneIcon
+                    color='error'
+                    fontSize='10rem'
+                    className='error__icon'
+                    />
+                </div>
+            </section> :<></>
             }
-            
-            </section> : <></>
-            }
-            <ToastContainer />
+        </section>
+        <ToastContainer />
         </main>
     )
 }

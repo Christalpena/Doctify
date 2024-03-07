@@ -1,9 +1,9 @@
-main{
+.home{
     margin: auto;
-    padding: 0 100px 50px 100px;
-    gap: 30px;
+    padding: 0 100px 40px 100px;
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
+    gap: 20px;
 }
 
 form{
@@ -11,8 +11,8 @@ form{
 }
 
 .api-inputs{
-    gap: 10px;
-    width: 600px;
+    width: 40%;
+    margin-right: 10px;
     transition: all 2s ease-in;
 }
 
@@ -43,7 +43,7 @@ form{
 }
 .api-inputs h3{
     padding: 10px;
-    outline: 3px solid #9290C3;
+    outline: 3px solid var(--secondary-color);
     border-radius: 5px;
     width: 100px;
     margin: 0;
@@ -75,7 +75,7 @@ form{
 
 .documentationSection{
     flex-grow: 0.8;
-    width: 600px;
+    width: 50%;
     box-shadow: 0px 0px 6px 2px #cdc9c244;
     border-radius: 5px;
 }
@@ -115,7 +115,7 @@ form{
     color: var(--text-color) !important;
 }
 .response-container{
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 .response-list{
     margin-top: 1rem;
@@ -123,6 +123,10 @@ form{
     padding: 2rem;
     border-radius: 20px;
     list-style: none;
+}
+
+.response-list ul li{
+    overflow-x:overlay;
 }
 
 table{
@@ -143,7 +147,7 @@ td, th {
 }
 
 .print-document{
-    padding: 50px;
+    padding: 40px;
     color: black;
 }
 
@@ -153,13 +157,58 @@ td, th {
     color: var(--text-color);
 }
 
+/*WEOLCOME SECTION*/
+.welcomeSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/*ERROR*/
+.errorSection{
+    margin: auto;
+}
+.errorSection > div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.errorSection h1{
+    text-transform: uppercase;
+    font-size: xx-large;
+}
+.error__icon, .doc__icon{
+    font-size:  10rem;
+}
+
+/*RESPONSIVE*/
+
 @media screen and (max-width: 1230px){
-    main{
+    .home{
         flex-wrap: wrap;
     }
 
     .api-inputs, .documentationSection{
-        width: 100%;
+        width: 700px;
 
+    }
+    .documentationSection{
+        flex-grow: 0;
+    }
+}
+
+@media screen and (max-width:730px){
+    main{
+        padding: 0px 40px 40px 40px;
+    }
+    
+}
+
+@media (min-width: 600px){
+    .css-cuefkz-MuiContainer-root {
+        margin: 0;
     }
 }

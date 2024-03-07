@@ -25,7 +25,7 @@ const DocumentationTemplate = (props:any) => {
               <h2 className='title'>API DOCUMENTATION</h2>
 
               <h3>Base URL</h3>
-              {getUrl}
+              <h5>{getUrl}</h5>
             </div>
             <hr />
             <div className='endPoints'>
