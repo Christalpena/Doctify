@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 
 const Api = (props:any) => {
-    const {fields, setFields,data,setData} = props
+    const {fields, setFields,data,setData,setRequired} = props
     const [getUrl,setGetUrl] = useState();
     const [postUrl,setPostUrl] = useState();
     const [deleteUrl,setDeleteUrl] = useState();
@@ -49,7 +49,7 @@ const Api = (props:any) => {
         <main >
         <section className='home'>
             <section className='api-inputs'>
-                <h2>API JSON URLs</h2>
+                <h2>APIs RESTful URLs</h2>
                 <form action="" method="post" onSubmit={genarateDocumentation}>
                 <Input type={"url"} id={'GET'} url={setGetUrl} required={true}/>
                 <div className='path-input'>
@@ -85,6 +85,7 @@ const Api = (props:any) => {
                     deleteUrl={deleteUrl}
                     fields={fields}
                     setFields={setFields}
+                    setRequired={setRequired}
                 />
             </section> : 
             error ? 

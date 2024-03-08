@@ -1,31 +1,39 @@
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
-export function iterateObjectTable(data: any,fields:any): JSX.Element {
+
+export function iterateObjectTable(data: any,fields:any,setFields:any): JSX.Element {
+  console.log(fields)
+
   return (
     <>
     {Object.keys(data).map((key:any, index:any) => {
       if (typeof data[key] === 'object' && data[key] !== null){
-        return iterateObjectTable(data[key],fields);
+        return iterateObjectTable(data[key],fields,setFields);
       } else{
         return(
         <tr key={index} >
           <td>{key}</td>
           <td>{typeof data[key]}</td>
           <td>{fields[key] === true ? 'Si' : 'No'}</td>
+          <td>
+            <Tooltip title="Eliminar">
+                <IconButton>
+                  <RemoveCircleOutlineRoundedIcon />
+                </IconButton>
+            </Tooltip>
+            </td>
         </tr>
         )
       }})}
     </>);
 }
 
-const setRequired = (field: string, valor: boolean,setfields: any) => {
-    setfields((prevState: any) => ({ ...prevState, [field]: valor }));
-};
 
-
-
-export function iterateObject(data: any,section:string,fields:any,setFields:any) {
+export function iterateObject(data: any,section:string,fields:any,setFields:any,setRequired:any) {
 
     return (
       <li>
@@ -35,7 +43,7 @@ export function iterateObject(data: any,section:string,fields:any,setFields:any)
               <ul key={index}>
                 <li>{key} : </li> 
                 <li>&#123;</li>
-                {iterateObject(data[key],section,fields,setFields)}
+                {iterateObject(data[key],section,fields,setFields,setRequired)}
                 <li>&#125;</li>
               </ul>
             );
@@ -48,7 +56,7 @@ export function iterateObject(data: any,section:string,fields:any,setFields:any)
                     <li><strong>"{key}" :</strong> <span>&#123;</span></li> 
                     <li className='fields'><strong>"type" :</strong> "{typeof data[key]}",</li>
                     <li className='fields'>
-                    <FormControlLabel control={<Checkbox defaultChecked={fields[key]} onChange={(e) => setRequired(key, e.target.checked,setFields)} />} label=<strong>"Requerido" :</strong> />
+                    <FormControlLabel control={<Checkbox checked={!!fields[key]} onChange={(e) => setRequired(key, e.target.checked)} />} label=<strong>"Requerido" :</strong> />
                     </li>
                     <li>&#125; ,</li>
 

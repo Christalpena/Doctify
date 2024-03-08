@@ -5,14 +5,14 @@ import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
   
-    const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields} = props
+    const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields,setRequired} = props
 
     const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
-
+    console.log(fields)
     const ref:any = useRef<HTMLDivElement>();
 
     return(
-        <section  >
+        <section>
           <ReactToPrint
               bodyClass="print-document"
               content={() => ref.current}
@@ -58,7 +58,7 @@ const DocumentationTemplate = (props:any) => {
                       <span>&#123;</span>
                     <ul>
                     {
-                      iterateObject(data,'',fields,setFields)
+                      iterateObject(data,'',fields,setFields,setRequired)
                     }
                     </ul>
                     <span>&#125;</span>
@@ -75,7 +75,7 @@ const DocumentationTemplate = (props:any) => {
                         <span>&#123;</span>
 
                             {
-                            iterateObject(data,'get',fields,setFields)
+                            iterateObject(data,'get',fields,setFields,setRequired)
                             }
                         <span>&#125;</span>
 
@@ -98,7 +98,7 @@ const DocumentationTemplate = (props:any) => {
                               </tr>
                             </thead>
                             <tbody>
-                            {iterateObjectTable(data,fields)}
+                            {iterateObjectTable(data,fields,setFields)}
                             </tbody>
                           </table>
 
