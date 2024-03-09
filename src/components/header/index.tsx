@@ -14,7 +14,7 @@ const Header = () => {
                         <img src="Doctify.png" alt="" />
                         <h1>DOCTIFY</h1>
                     </li>
-                    <li>Github</li>
+                    <li className="githubLink">Github</li>
                 </ul>
             </nav>
         </header>

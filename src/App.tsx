@@ -8,12 +8,15 @@ function App() {
   const [data,setData] = useState()
 
   const setRequired = (field: string, valor: boolean) => {
-    setFields((prevState: any) => ({ ...prevState, [field]: valor }));
+    if (field in fields){
+      setFields((prevState: any) => ({ ...prevState, [field]: valor }));
+    }
   };
   const data2:any = data ? data : ''
+  
   useEffect(() => {
-    Object.keys(data2).map((key,index) => {
-      setRequired(key,true)
+    Object.keys(data2).map((key) => {
+      setFields((prevState: any) => ({ ...prevState, [key]: true }))
     })
   },[data])
 

@@ -26,6 +26,7 @@ header{
 .header-logo h1{
     font-size: xx-large;
     font-family: var(--secondary-font);
+    color: var(--secondary-text-color);
 }
 
 header ul {
@@ -44,7 +45,3 @@ header ul li{
 
 }
 
-header ul li:hover{
-    font-size: large;
-    color: var(--secondary-text-color);
-}

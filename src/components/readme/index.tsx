@@ -14,24 +14,27 @@ const ReadMe = (props:any) => {
     const recorrer = (data: any, fields: any, endPoint: string): JSX.Element => {
       return ( 
         <>
-        {Object.keys(data).map((key:any, index:any) => {
+        {endPoint ?
+        Object.keys(data).map((key:any, index:any) => {
           if (typeof data[key] === 'object' && data[key] !== null){
             return recorrer(data[key], fields, endPoint);
           } else{
             return(
-            <>
-            {endPoint ?
               <div key={index}>
               | {key} | {typeof data[key]} | {data[key]} |
               </div>
-            :
-            <div key={index}>
-              | {key} | {typeof data[key]} | {fields[key] === true ? 'Si' : 'No'} |
-            </div>
-            } </>
             )
           }
-        })}
+        })
+        :
+        Object.keys(fields).map((key:any) => {
+          return(
+            <div key={key}>
+            | {key} | {typeof data[key]} | {fields[key] === true ? 'Si' : 'No'} |
+            </div>
+          )
+        })
+        }
         </>
     );
    }

@@ -97,7 +97,7 @@ const DocumentationTemplate = (props:any) => {
                                 <th>Requerido</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody id='tbodyParent'>
                             {iterateObjectTable(data,fields,setFields)}
                             </tbody>
                           </table>
