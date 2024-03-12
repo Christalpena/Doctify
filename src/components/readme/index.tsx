@@ -1,36 +1,28 @@
-import { requiredParameters } from "../documentation/data";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { requiredParameters } from '../documentation/data';
 
 const ReadMe = (props:any) => {
-    const {data,getUrl,postUrl,deleteUrl,putUrl,fields} = props
-
-    const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
-    console.log(putUrl)
+    const {data,getUrl,postUrl,deleteUrl,putUrl,postFields,getFields} = props
 
     const notify = () => toast("Copiado al clickBoard!");
 
-
-    const recorrer = (data: any, fields: any, endPoint: string): JSX.Element => {
+    const recorrer = (data: any, getFields: any, endPoint: string): JSX.Element => {
       return ( 
         <>
         {endPoint ?
         Object.keys(data).map((key:any, index:any) => {
-          if (typeof data[key] === 'object' && data[key] !== null){
-            return recorrer(data[key], fields, endPoint);
-          } else{
-            return(
-              <div key={index}>
-              | {key} | {typeof data[key]} | {data[key]} |
-              </div>
-            )
-          }
+          return(
+            <div key={index}>
+            | {key} | {typeof data[key]} | {data[key]} |
+            </div>
+          )
         })
         :
-        Object.keys(fields).map((key:any) => {
+        Object.keys(getFields).map((key:any) => {
           return(
             <div key={key}>
-            | {key} | {typeof data[key]} | {fields[key] === true ? 'Si' : 'No'} |
+            | {key} | {typeof data[key]} | {getFields[key] === true ? 'Si' : 'No'} |
             </div>
           )
         })
@@ -67,8 +59,9 @@ const ReadMe = (props:any) => {
             <div id="readme-content">
               | Campo | Tipo | Data | <br/>
               | :--- | :---: | ---: |
-              {recorrer(data,fields,'get')} 
+              {recorrer(data,getFields,'get')} 
             </div>
+
             {postUrl ? 
             
               <div>
@@ -77,33 +70,17 @@ const ReadMe = (props:any) => {
 
               | Campo | Tipo | Requerido | <br/>
               | :--- | :---: | ---: |
-              {recorrer(data,fields,'')} 
+              {recorrer(data,postFields,'')} 
               </div> : <></>
             }
 
             {putUrl ?
-            <div>
-              <h3>#### PUT</h3>
-              <p>##### Url: {putUrl}</p> <br />
-
-              | Campos | Tipo | Requerido | <br />
-              | :--- | :---: | ---: | <br/>
-              | {putParameter} | {typeof data[putParameter]} | {putParameterRequired ? 'Si' : 'No'} |
-            </div> : <></>
-
+              <>{requiredParameters(data,putUrl,'put',postFields,getFields)}</> : <></>
             }
 
 
             {deleteUrl ?
-            <div>
-              <h3>#### Delete</h3>
-              <p>##### Url: {deleteUrl}</p> <br />
-
-              | Campos | Tipo | Requerido | <br />
-              | :--- | :---: | ---: | <br/>
-              | {deleteParameter} | {typeof data[deleteParameter]} | {deleteParameterRequired ? 'Si' : 'No'} |
-            </div> : <></>
-
+            <>{requiredParameters(data,deleteUrl,'delete',postFields,getFields)}</> : <></>
             }
 
         </div>

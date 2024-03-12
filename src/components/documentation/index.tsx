@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 
 const Api = (props:any) => {
-    const {fields, setFields,data,setData,setRequired} = props
+    const {getFields, setGetFields,data,setData,setRequiredGetFields,postFields,setPostFields,setRequiredPostFields} = props
     const [getUrl,setGetUrl] = useState();
     const [postUrl,setPostUrl] = useState();
     const [deleteUrl,setDeleteUrl] = useState();
@@ -83,9 +83,13 @@ const Api = (props:any) => {
                     postUrl={postUrl}
                     putUrl={putUrl}
                     deleteUrl={deleteUrl}
-                    fields={fields}
-                    setFields={setFields}
-                    setRequired={setRequired}
+                    getFields={getFields}
+                    setGetFields={setGetFields}
+                    setRequiredGetFields={setRequiredGetFields}
+                    postFields={postFields}
+                    setPostFields={setPostFields}
+                    setRequiredPostFields={setRequiredPostFields}
+
                 />
             </section> : 
             error ? 

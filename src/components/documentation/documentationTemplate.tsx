@@ -1,14 +1,11 @@
 import { useRef } from 'react';
 import "./documentationTemplate.css"
-import { iterateObjectTable, requiredParameters,iterateObject } from './data';
+import { iterateObjectTable,iterateObject, requiredParameters } from './data';
 import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
   
-    const {data,getUrl,postUrl,deleteUrl,putUrl,fields,setFields,setRequired} = props
-
-    const [putParameter,putParameterRequired,deleteParameter,deleteParameterRequired] = requiredParameters(fields,putUrl,deleteUrl)
-    console.log(fields)
+    const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setRequiredGetFields,postFields,setPostFields} = props;
     const ref:any = useRef<HTMLDivElement>();
 
     return(
@@ -21,9 +18,7 @@ const DocumentationTemplate = (props:any) => {
               )}/>
           <div ref={ref} id='content'>
             <div>
-
               <h2 className='title'>API DOCUMENTATION</h2>
-
               <h3>Base URL</h3>
               <h5>{getUrl}</h5>
             </div>
@@ -58,7 +53,7 @@ const DocumentationTemplate = (props:any) => {
                       <span>&#123;</span>
                     <ul>
                     {
-                      iterateObject(data,'',fields,setFields,setRequired)
+                      iterateObject(data,'',getFields,setRequiredGetFields)
                     }
                     </ul>
                     <span>&#125;</span>
@@ -75,7 +70,7 @@ const DocumentationTemplate = (props:any) => {
                         <span>&#123;</span>
 
                             {
-                            iterateObject(data,'get',fields,setFields,setRequired)
+                            iterateObject(data,'get',getFields,setRequiredGetFields)
                             }
                         <span>&#125;</span>
 
@@ -98,7 +93,7 @@ const DocumentationTemplate = (props:any) => {
                               </tr>
                             </thead>
                             <tbody id='tbodyParent'>
-                            {iterateObjectTable(data,fields,setFields)}
+                            {iterateObjectTable(data,postFields,setPostFields)}
                             </tbody>
                           </table>
 
@@ -118,11 +113,7 @@ const DocumentationTemplate = (props:any) => {
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>
-                              <tr>
-                                <th>{putParameter}</th>
-                                <th>{typeof data[putParameter]}</th>
-                                <th>{putParameterRequired ? 'Si' : 'No'}</th>
-                              </tr>
+                              {requiredParameters(data,putUrl,'',postFields,getFields)}
 
                             </tbody>
                           </table>
@@ -142,12 +133,7 @@ const DocumentationTemplate = (props:any) => {
                                 <th>Tipo</th>
                                 <th>Requerido</th>
                               </tr>
-                              <tr>
-                                <th>{deleteParameter}</th>
-                                <th>{typeof data[deleteParameter]}</th>
-                                <th>{deleteParameterRequired ? 'Si' : 'No'}</th>
-                              </tr>
-
+                              {requiredParameters(data,deleteUrl,'',postFields,getFields)}
                             </tbody>
                           </table>
                         </div>

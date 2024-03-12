@@ -3,22 +3,33 @@ import './App.css'
 import Api from './components/documentation'
 import Header from './components/header/index'
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
-function App() {
-  const [fields,setFields] = useState({})
-  const [data,setData] = useState()
 
-  const setRequired = (field: string, valor: boolean) => {
-    if (field in fields){
-      setFields((prevState: any) => ({ ...prevState, [field]: valor }));
-    }
+function App() {
+  const [getFields,setGetFields] = useState({});
+  const [postFields,setPostFields] = useState({});
+  const [data,setData] = useState();
+
+  const setRequiredGetFields = (field: string, valor: boolean) => {
+    setGetFields((prevState: any) => ({ ...prevState, [field]: valor }));
+    if(field in postFields){
+      setRequiredPostFields(field,valor);
+    };
   };
-  const data2:any = data ? data : ''
+
+  const setRequiredPostFields = (field: string, valor: boolean) => {
+    setPostFields((prevState: any) => ({ ...prevState, [field]: valor }));
+  };
+
+  const data2:any = data ? data : '';
   
   useEffect(() => {
+    setGetFields({})
+    setPostFields({})
     Object.keys(data2).map((key) => {
-      setFields((prevState: any) => ({ ...prevState, [key]: true }))
-    })
-  },[data])
+      setGetFields((prevState: any) => ({ ...prevState, [key]: true }));
+      setPostFields((prevState: any) => ({ ...prevState, [key]: true }));
+    });
+  },[data]);
 
   return (
     <BrowserRouter>
@@ -27,11 +38,14 @@ function App() {
         <Route path='/' element={<Navigate to='/doctify'/>}></Route>
         <Route path='/doctify' element={
           <Api
-          fields={fields}
-          setFields={setFields}
+          getFields={getFields}
+          setGetFields={setGetFields}
           data={data}
           setData={setData}
-          setRequired={setRequired}
+          setRequiredGetFields={setRequiredGetFields}
+          postFields={postFields}
+          setPostFields={setPostFields}
+          setRequiredPostFields={setRequiredPostFields}
           />
         }></Route>
       </Routes>
