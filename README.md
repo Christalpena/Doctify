@@ -1,4 +1,4 @@
-# Doctify
+![Screenshot 2024-03-14 134051](https://github.com/Christalpena/Doctify/assets/107286072/da0c5724-6dd6-4786-8dc9-f617c497e6ce)
 
 Doctify es una aplicación diseñada para simplificar y agilizar el proceso de documentación de tu API REST. Con Doctify, puedes generar documentación detallada y completa para tu API en cuestión de minutos.
 
@@ -18,6 +18,11 @@ Doctify es una aplicación diseñada para simplificar y agilizar el proceso de d
 
 Una vez que hayas ingresado los detalles de tu API, puedes imprimir la documentación o copiarla al portapapeles para su uso.
 
+--->NOTA: DEBES DE ASEGURARTE QUE EL PARAMETRO QUE ESTE EN LA URL PUT Y DELETE ESTEN BIEN ESCRITOS Y QUE ESTOS SE ENCUENTRE YA SEA EN LA DATA DE POST O GET, SI NO PODRAS PERCIBIR ALGO COMO ESTO: 
+
+![Screenshot 2024-03-14 134549](https://github.com/Christalpena/Doctify/assets/107286072/3018c2f1-0c9b-4eec-a9f2-5304ed0580eb)
+
+
 ## Ejemplo
 
 Supongamos que tenemos una API de ejemplo con las siguientes URLs:
@@ -32,3 +37,8 @@ Para documentar esta API con Doctify, seguiríamos estos pasos:
 1. Ingresamos la URL GET: `http://example.com/api/v1/users`
 2. Opcionalmente, ingresamos la URL POST, PUT y DELETE con los parámetros dinámicos si es necesario.
 3. Doctify generará automáticamente la documentación para cada endpoint basándose en la URL GET y su respuesta de datos.
+
+![Screenshot 2024-03-14 134909](https://github.com/Christalpena/Doctify/assets/107286072/e397a0c1-e959-4e8e-8f5f-bf53b20189c6)
+
+![Screenshot 2024-03-14 134948](https://github.com/Christalpena/Doctify/assets/107286072/3bd7bf69-398e-48c0-ad28-b5102efd29f5)
+
