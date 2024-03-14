@@ -2,14 +2,19 @@
 
 Doctify es una aplicación diseñada para simplificar y agilizar el proceso de documentación de tu API REST. Con Doctify, puedes generar documentación detallada y completa para tu API en cuestión de minutos.
 
-## Características
+## Características 🚀
 
 - **Entrada Rápida**: Doctify ofrece cinco campos de entrada que te permiten ingresar los detalles de tu API de manera rápida y sencilla.
 - **Generación Automática**: A partir de la URL GET y su respuesta de datos, Doctify genera automáticamente la información necesaria para los otros endpoints.
 - **Eliminación de Campos No Necesarios**: Cuando ingresas una URL POST, puedes eliminar los campos que no necesites en la documentación.
 - **Impresión y Copiado**: Doctify te permite imprimir la documentación o copiarla al portapapeles fácilmente para su distribución.
 
-## Uso
+
+## IMPORTANTE ⚠️
+
+Doctify solo le hara una peticion a la URL GET y apartir del objecto de datos que esta retorne se Generara la informacion para los diferentes endPoints.
+
+## Uso 📑
 
 1. **URL GET**: Ingresa la URL GET de tu API. Este es el único campo requerido.
 2. **PATH**: Ingresa la ubicación del objeto de datos si no proporcionaste una URL GET directa al objeto de datos.
