@@ -43,17 +43,32 @@ const ReadMe = (props:any) => {
     }
 }  
   
-
     return(
         <section>
           <button className="btn" onClick={handleCopyButtonClick}>Copiar</button>
           <div id="readme-content" >
             <h1> # DOCUMENTACION DE API </h1> 
             
-            <h3>### URL Base</h3> 
+            <h3>## URL Base</h3> 
             <p>{getUrl}</p> 
-            <h3>### EndPoints</h3>
-            <h4>#### GET </h4>
+            <h3>## EndPoints</h3>
+              { getUrl ? 
+                  <p>- **GET**</p>
+              : <></> 
+              }
+              { postUrl ? 
+                  <p>- **POST**</p>
+              : <></> 
+              }
+              { deleteUrl ? 
+                  <p>- **DELETE**</p>
+              : <></> 
+              }
+              {  putUrl ? 
+                  <p>- **PUT**</p>
+              : <></> 
+              }
+            <h4 className='get'>### GET </h4>
             <p>##### GetUrl: {getUrl}</p> <br />
 
             <div id="readme-content">
@@ -65,8 +80,9 @@ const ReadMe = (props:any) => {
             {postUrl ? 
             
               <div>
-              <h4>#### POST</h4>
-              <p>##### PostUrl: {postUrl}</p> <br />
+              <h3 className='post'>## POST</h3>
+              <p>##### PostUrl: {postUrl}</p>
+              <h4>### Request Body</h4>
 
               | Campo | Tipo | Requerido | <br/>
               | :--- | :---: | ---: |

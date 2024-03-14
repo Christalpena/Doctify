@@ -19,7 +19,7 @@ form{
     font-weight: 500;
 }
 
-.api-inputs-nota{
+.api-inputs-note{
     background-color: var(--secondary-color);
     padding: 1.5rem;
     border-radius: 5px;
@@ -27,7 +27,16 @@ form{
     margin: 0;
 }
 
-.api-inputs-nota h1, p{
+.api-inputs-note a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.api-inputs-note a:hover{
+    color: white;
+}
+
+.api-inputs-note h1, p{
     margin: 0;
 }
 

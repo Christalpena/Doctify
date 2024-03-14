@@ -68,10 +68,10 @@ const Api = (props:any) => {
                 <button className='btn' type="submit">Generar Documentacion</button>
                 </form>
 
-                <div className='api-inputs-nota'>
+                <div className='api-inputs-note'>
                     <h1>Nota</h1>
                     <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
-                    <a>¡Mas Informacion aqui!</a>
+                    <a href='https://github.com/Christalpena/Doctify.git'>¡Mas Informacion aqui!</a>
                 </div>
 
             </section>

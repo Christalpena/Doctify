@@ -81,7 +81,6 @@ export function requiredParameters(data:any,url:string,section:any,postFields:an
 
   const parameter:string = url.slice(url.lastIndexOf('/')+1 + 1);
   const requestBody = Object.keys(postFields).filter((key:any) => key !== parameter)
-  console.log(requestBody)
   
   return(
     !section ?
@@ -92,7 +91,7 @@ export function requiredParameters(data:any,url:string,section:any,postFields:an
       <table>
         <tbody>
           <tr>
-            <th>Campo</th>
+            <th>Parametro</th>
             <th>Tipo</th>
           </tr>
           <tr>
@@ -103,13 +102,16 @@ export function requiredParameters(data:any,url:string,section:any,postFields:an
       </table>
       { endPoint === 'put' ? 
       <div>
-      <h3>REQUEST BODY</h3>
+      <h3>EJMPLO DEL REQUEST BODY</h3>
         <div className='response-list'>
           <span>&#123;</span>
           <ul>
           {Object.keys(requestBody).map((key:any) => {
             return(
-              <li key={key}>{requestBody[key]}: {data[requestBody[key]]}</li> 
+              <li key={key}>
+                <strong>"{requestBody[key]}" : </strong> 
+                {typeof data[requestBody[key]] === 'boolean' ? 'true' : typeof data[requestBody[key]] === 'number' ? data[requestBody[key]] : `"${data[requestBody[key]]}"`}
+              </li> 
             )
           })}
           </ul>
@@ -122,11 +124,11 @@ export function requiredParameters(data:any,url:string,section:any,postFields:an
     </div>
     : 
     <div>
-      <h3>#### {endPoint}</h3>
+      <h3 className={endPoint}>## {endPoint}</h3>
       <p>##### Url: {url}</p> <br />
 
-      | Campos | Tipo | <br />
-      | :--- | :---: | ---: | <br/>
+      | Parametro | Tipo | <br />
+      | :--- | :---: | <br/>
       | {parameter}| {typeof data[parameter]} | <br/>
     </div> 
   )

@@ -40,8 +40,14 @@ header ul {
 header ul li{
     list-style: none;
     cursor: pointer;
-    transition: all 0.30s ease-out;
-    font-size:large;
+    font-size:medium;
 
 }
-
+header ul li a{
+    text-decoration: none;
+    color: white;
+    transition: all 0.30s ease-out;
+}
+header ul li a:hover{
+    font-size: large;
+}

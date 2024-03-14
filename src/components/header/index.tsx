@@ -1,11 +1,7 @@
 import "./header.css"
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-    const navigate = useNavigate();
-    const nav = (route:string) => {
-        navigate(`/${route}`)
-    }
+
     return(
         <header>
             <nav>
@@ -14,7 +10,7 @@ const Header = () => {
                         <img src="Doctify.png" alt="" />
                         <h1>DOCTIFY</h1>
                     </li>
-                    <li className="githubLink">Github</li>
+                    <li className="githubLink"><a href="https://github.com/Christalpena/Doctify.git">Github</a></li>
                 </ul>
             </nav>
         </header>
