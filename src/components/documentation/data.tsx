@@ -77,26 +77,57 @@ export function iterateObject(data: any,section:string,getFields:any,setRequired
     );
 }
 
-export function requiredParameters(data:any,url:string,section:any,postFields:any,getFields:any){
+export function requiredParameters(data:any,url:string,section:any,postFields:any,endPoint?:any){
 
   const parameter:string = url.slice(url.lastIndexOf('/')+1 + 1);
-  const required = parameter in postFields ? postFields[parameter] : getFields[parameter]
+  const requestBody = Object.keys(postFields).filter((key:any) => key !== parameter)
+  console.log(requestBody)
   
   return(
     !section ?
-    <tr>
-      <th>{parameter}</th>
-      <th>{typeof data[parameter]}</th>
-      <th>{required ? 'Si' : 'No'}</th>
-    </tr> 
-    :
     <div>
-      <h3>#### Delete</h3>
+      <hr />
+      <h2 className={endPoint}>{endPoint}</h2>
+      <strong>URL: </strong><span>{url}</span>
+      <table>
+        <tbody>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+          </tr>
+          <tr>
+            <th>{parameter}</th>
+            <th>{typeof data[parameter]}</th>
+          </tr> 
+        </tbody>
+      </table>
+      { endPoint === 'put' ? 
+      <div>
+      <h3>REQUEST BODY</h3>
+        <div className='response-list'>
+          <span>&#123;</span>
+          <ul>
+          {Object.keys(requestBody).map((key:any) => {
+            return(
+              <li key={key}>{requestBody[key]}: {data[requestBody[key]]}</li> 
+            )
+          })}
+          </ul>
+          <span>&#125;</span>
+        </div>
+      </div>
+      : <></>
+    
+      }
+    </div>
+    : 
+    <div>
+      <h3>#### {endPoint}</h3>
       <p>##### Url: {url}</p> <br />
 
-      | Campos | Tipo | Requerido | <br />
+      | Campos | Tipo | <br />
       | :--- | :---: | ---: | <br/>
-      | {parameter} | {typeof data[parameter]} | {required ? 'Si' : 'No'} |
+      | {parameter}| {typeof data[parameter]} | <br/>
     </div> 
   )
 }

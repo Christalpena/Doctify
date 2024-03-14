@@ -18,6 +18,7 @@ const Api = (props:any) => {
     const [putUrl,setPutUrl] = useState();
     const [path,setPath] = useState();
     const [error,setError] = useState();
+    const [status,setStatus] = useState()
 
     const delay = (ms:number) => new Promise(
         resolve => setTimeout(resolve, ms)
@@ -28,9 +29,9 @@ const Api = (props:any) => {
 
     const getData = async (url:any,dataPath:any) => {
         try {
-            const response = await axios.get(url);
+            const response:any = await axios.get(url);
+            setStatus(response.status)
             let data = response.data;
-            console.log(data)
             {dataPath ? setData(data[dataPath][0]) : data.length === undefined ? setData(data) : setData(data[0])};
             await delay(100)
             notify();
@@ -89,6 +90,7 @@ const Api = (props:any) => {
                     postFields={postFields}
                     setPostFields={setPostFields}
                     setRequiredPostFields={setRequiredPostFields}
+                    status={status}
 
                 />
             </section> : 

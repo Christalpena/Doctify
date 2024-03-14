@@ -39,9 +39,12 @@ form{
 }
 .delete{
     color: red;
+    text-transform: uppercase;
+
 }
 .put{
     color: orange;
+    text-transform: uppercase;
 }
 .api-inputs h3{
     padding: 10px;

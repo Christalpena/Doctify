@@ -75,12 +75,12 @@ const ReadMe = (props:any) => {
             }
 
             {putUrl ?
-              <>{requiredParameters(data,putUrl,'put',postFields,getFields)}</> : <></>
+              requiredParameters(data,putUrl,'readme',postFields,'put') : <></>
             }
 
 
             {deleteUrl ?
-            <>{requiredParameters(data,deleteUrl,'delete',postFields,getFields)}</> : <></>
+            requiredParameters(data,deleteUrl,'readme',postFields,'delete') : <></>
             }
 
         </div>

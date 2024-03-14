@@ -41,8 +41,7 @@ function a11yProps(index: number) {
 
 export default function BasicTabs(props:any) {
   const [value, setValue] = useState(0);
-  const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setGetFields,setRequiredGetFields,postFields,setPostFields,setRequiredPostFields} = props
-  console.log(putUrl)
+  const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setGetFields,setRequiredGetFields,postFields,setPostFields,setRequiredPostFields,status} = props
   
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -70,6 +69,7 @@ export default function BasicTabs(props:any) {
           postFields={postFields}
           setPostFields={setPostFields}
           setRequiredPostFields={setRequiredPostFields}
+          status={status}
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
@@ -81,6 +81,7 @@ export default function BasicTabs(props:any) {
           deleteUrl={deleteUrl}
           postFields={postFields}
           getFields={getFields}
+          status={status}
         />
       </CustomTabPanel>
     </Box>

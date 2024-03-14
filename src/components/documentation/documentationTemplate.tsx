@@ -5,7 +5,7 @@ import ReactToPrint from "react-to-print";
 
 const DocumentationTemplate = (props:any) => {
   
-    const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setRequiredGetFields,postFields,setPostFields} = props;
+    const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setRequiredGetFields,postFields,setPostFields,status} = props;
     const ref:any = useRef<HTMLDivElement>();
 
     return(
@@ -68,10 +68,16 @@ const DocumentationTemplate = (props:any) => {
                         <strong>URL: </strong><span>{getUrl}</span>
                         <div className='response-list'>
                         <span>&#123;</span>
+                        <br />
+                        <strong>"success": {status},</strong>
+                        <br />
+                        <strong>"data": </strong><span> &#91; &#123;</span>
 
                             {
                             iterateObject(data,'get',getFields,setRequiredGetFields)
                             }
+                        <span>&#125; &#93;,</span>
+                        <br />
                         <span>&#125;</span>
 
                         </div>
@@ -102,42 +108,16 @@ const DocumentationTemplate = (props:any) => {
 
                     { putUrl ?
                     <div className='response-container' >
-                        <hr />
-                        <h2 className='put'>PUT</h2>
-                        <strong>URL: </strong><span>{putUrl}</span>
-                        <div>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <th>Campos</th>
-                                <th>Tipo</th>
-                                <th>Requerido</th>
-                              </tr>
-                              {requiredParameters(data,putUrl,'',postFields,getFields)}
 
-                            </tbody>
-                          </table>
-                        </div>
+                      {requiredParameters(data,putUrl,'',postFields,'put')}
+     
                     </div> : <></>}
+
                     { deleteUrl ?
-                    
                     <div className='response-container' >
-                        <hr />
-                        <h2 className='delete'>DELETE</h2>
-                        <strong>URL: </strong><span>{deleteUrl}</span>
-                        <div>
-                          <table>
-                            <tbody>
-                              <tr>
-                                <th>Campos</th>
-                                <th>Tipo</th>
-                                <th>Requerido</th>
-                              </tr>
-                              {requiredParameters(data,deleteUrl,'',postFields,getFields)}
-                            </tbody>
-                          </table>
-                        </div>
+                      {requiredParameters(data,deleteUrl,'',postFields,'delete')}
                     </div> : <></>}
+
                 </div>
             </section>
           </div>
