@@ -77,59 +77,69 @@ export function iterateObject(data: any,section:string,getFields:any,setRequired
     );
 }
 
-export function requiredParameters(data:any,url:string,section:any,postFields:any,endPoint?:any){
-
-  const parameter:string = url.slice(url.lastIndexOf('/')+1 + 1);
-  const requestBody = Object.keys(postFields).filter((key:any) => key !== parameter)
-  
-  return(
-    !section ?
-    <div>
-      <hr />
-      <h2 className={endPoint}>{endPoint}</h2>
-      <strong>URL: </strong><span>{url}</span>
-      <table>
-        <tbody>
-          <tr>
-            <th>Parametro</th>
-            <th>Tipo</th>
-          </tr>
-          <tr>
-            <th>{parameter}</th>
-            <th>{typeof data[parameter]}</th>
-          </tr> 
-        </tbody>
-      </table>
-      { endPoint === 'put' ? 
+export function dataBody(section:string,data:any,body:any){
+  return (
       <div>
-      <h3>EJMPLO DEL REQUEST BODY</h3>
-        <div className='response-list'>
-          <span>&#123;</span>
-          <ul>
-          {Object.keys(requestBody).map((key:any) => {
-            return(
-              <li key={key}>
-                <strong>"{requestBody[key]}" : </strong> 
-                {typeof data[requestBody[key]] === 'boolean' ? 'true' : typeof data[requestBody[key]] === 'number' ? data[requestBody[key]] : `"${data[requestBody[key]]}"`}
-              </li> 
-            )
-          })}
-          </ul>
-          <span>&#125;</span>
-        </div>
+          <h4>### Body</h4>
+          <div className='response-list'>
+              {section ? <p>```</p> : <></>}
+              <span>&#123;</span>
+              <ul>
+                  {Object.keys(body).map((key: any) => (
+                      <li key={key}>
+                          <strong>"{key}" : </strong>
+                          {typeof data[key] === 'boolean' ? 'true' : typeof data[key] === 'number' ? data[key] : `"${data[key]}"`
+                          }
+                      </li>
+                  ))}
+              </ul>
+              <span>&#125;</span>
+              {section ? <p>```</p> : <></>}
+          </div>
       </div>
-      : <></>
-    
-      }
-    </div>
-    : 
-    <div>
-      <h3 className={endPoint}>## {endPoint}</h3>
-      <p>##### Url: {url}</p> <br />
+  );
+};
 
-      | Parametro | Tipo | <br />
-      | :--- | :---: | <br/>
-      | {parameter}| {typeof data[parameter]} | <br/>
-    </div> 
-  )
+export function requiredParameters(data: any, url: string, section: string, postFields: any, endPoint?: any) {
+  const parameter: string = url.slice(url.lastIndexOf('/') + 1 + 1);
+
+  return (
+      <div>
+          {!section ?
+              <>
+                  <hr />
+                  <h2 className={endPoint}>{endPoint}</h2>
+                  <strong>URL: </strong><span>{url}</span>
+                  <table>
+                      <tbody>
+                          <tr>
+                              <th>Parametro</th>
+                              <th>Tipo</th>
+                          </tr>
+                          <tr>
+                              <th>{parameter}</th>
+                              <th>{typeof data[parameter]}</th>
+                          </tr>
+                      </tbody>
+                  </table>
+                  {endPoint === 'put' ? 
+                  dataBody(section,data,postFields) : 
+                  <></>}
+              </>
+              :
+              <>
+                  <h3 className={endPoint}>## {endPoint}</h3>
+                  <p>##### Url {endPoint}: {url}</p> <br />
+
+                  | Parametro | Tipo | <br />
+                  | :--- | :---: | <br />
+                  | {parameter} | {typeof data[parameter]} | <br />
+                  
+                  {endPoint === 'put' ? 
+                  dataBody(section,data,postFields) : 
+                  <></>}
+              </>
+          }
+      </div>
+  );
 }

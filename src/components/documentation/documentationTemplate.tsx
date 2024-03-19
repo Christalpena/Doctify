@@ -23,7 +23,7 @@ const DocumentationTemplate = (props:any) => {
               <h5>{getUrl}</h5>
             </div>
             <hr />
-            <div className='endPoints'>
+            <section className='endPoints'>
                 <h3>EndPoints</h3>
                 <div>
                 { getUrl ? 
@@ -44,9 +44,9 @@ const DocumentationTemplate = (props:any) => {
                 }
                 </div>
                 
-            </div>
+            </section>
             <hr />
-            <div className='fields-section'>
+            <section className='fields-section'>
                 <h3>Campos</h3>
 
                     <div className='fieldsUl' >
@@ -58,7 +58,7 @@ const DocumentationTemplate = (props:any) => {
                     </ul>
                     <span>&#125;</span>
                     </div>
-            </div> 
+            </section> 
             <hr />
             <section>
                 <h3>Responses</h3>  

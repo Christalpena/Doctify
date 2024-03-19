@@ -10,7 +10,7 @@ const Header = () => {
                         <img src="Doctify.png" alt="" />
                         <h1>DOCTIFY</h1>
                     </li>
-                    <li className="githubLink"><a href="https://github.com/Christalpena/Doctify.git">Github</a></li>
+                    <a target='_blank' href="https://github.com/Christalpena/Doctify.git"><li className="githubLink">Github</li></a>
                 </ul>
             </nav>
         </header>
