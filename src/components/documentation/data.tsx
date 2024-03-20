@@ -160,7 +160,7 @@ export function requiredParameters(data: any, url: string, section: string, post
               :
               <>
                   <h3 className={endPoint}>## {endPoint}</h3>
-                  <p>##### Url {endPoint}: {url}</p> <br />
+                  <p className='urls'>##### Url {endPoint}: {url}</p> <br />
 
                   | Parametro | Tipo | <br />
                   | :--- | :---: | <br />

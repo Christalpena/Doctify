@@ -16,9 +16,9 @@ const DocumentationTemplate = (props:any) => {
               trigger={() => (
                   <button className='btn'>Generar</button>
               )}/>
-          <div ref={ref} id='content'>
+          <section ref={ref} id='content'>
             <div>
-              <h2 className='title'>API DOCUMENTATION</h2>
+              <h2 className='title'>DOCUMENTACION</h2>
               <h3>Base URL</h3>
               <h5 className='urls'>{getUrl}</h5>
             </div>
@@ -48,20 +48,19 @@ const DocumentationTemplate = (props:any) => {
             <hr />
             <section className='fields-section'>
                 <h3>Campos</h3>
-
                     <div className='fieldsUl' >
                       <span>&#123;</span>
-                    <ul>
-                    {
-                      iterateObject(data,'',getFields,setRequiredGetFields)
-                    }
-                    </ul>
-                    <span>&#125;</span>
+                      <ul>
+                      {
+                        iterateObject(data,'',getFields,setRequiredGetFields)
+                      }
+                      </ul>
+                      <span>&#125;</span>
                     </div>
             </section> 
             <hr />
             <section>
-                <h3>Responses</h3>  
+                <h3>RESPUESTAS</h3>  
                 <div>
                     <div className='response-container'>
                         <h2 className='get'>GET</h2>
@@ -98,19 +97,16 @@ const DocumentationTemplate = (props:any) => {
 
                     { putUrl ?
                     <div className='response-container' >
-
                       {requiredParameters(data,putUrl,'',postFields,'put')}
-     
                     </div> : <></>}
 
                     { deleteUrl ?
                     <div className='response-container' >
                       {requiredParameters(data,deleteUrl,'',postFields,'delete')}
                     </div> : <></>}
-
                 </div>
             </section>
-          </div>
+          </section>
         </section>
     )
 }

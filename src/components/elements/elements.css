@@ -1,0 +1,19 @@
+.url-inputs h3{
+    padding: 10px;
+    outline: 3px solid var(--secondary-color);
+    border-radius: 5px;
+    width: 100px;
+    margin: 0;
+}
+.url-inputs input{
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.path-input{
+    justify-content: space-between;
+}
+.path-input > div{
+    flex-grow: 1;
+}

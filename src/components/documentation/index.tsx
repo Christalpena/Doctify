@@ -50,7 +50,7 @@ const Api = (props:any) => {
         <main >
         <section className='home'>
             <section className='api-inputs'>
-                <h2>APIs RESTful URLs</h2>
+                <h2>API URLs</h2>
                 <form action="" method="post" onSubmit={genarateDocumentation}>
                 <Input type={"url"} id={'GET'} url={setGetUrl} required={true}/>
                 <div className='path-input'>

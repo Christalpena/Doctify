@@ -40,6 +40,12 @@ form{
     margin: 0;
 }
 
+.api-inputs  div{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
 .get{
     color: green;
 }
@@ -49,37 +55,10 @@ form{
 .delete{
     color: red;
     text-transform: uppercase;
-
 }
 .put{
     color: orange;
     text-transform: uppercase;
-}
-.api-inputs h3{
-    padding: 10px;
-    outline: 3px solid var(--secondary-color);
-    border-radius: 5px;
-    width: 100px;
-    margin: 0;
-}
-
-.path-input{
-    justify-content: space-between;
-}
-.path-input >div{
-    flex-grow: 1;
-}
-
-.api-inputs  div{
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.api-inputs div input{
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
 }
 .urls{
     text-overflow: ellipsis;

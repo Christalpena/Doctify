@@ -37,7 +37,7 @@ const ReadMe = (props:any) => {
           <h1> # DOCUMENTACION DE API </h1> 
           
           <h3>## URL Base</h3> 
-          <p>{getUrl}</p> 
+          <p className='urls'>{getUrl}</p> 
           <h3>## EndPoints</h3>
             { getUrl ? 
                 <p>- **GET**</p>
@@ -66,7 +66,7 @@ const ReadMe = (props:any) => {
 
           <section>
             <h3 className='get'>## GET </h3>
-            <p>##### Url GET: {getUrl}</p>
+            <p className='urls'>##### Url GET: {getUrl}</p>
 
             <div>
               {dataBody('readme',data,getFields)}
@@ -77,7 +77,7 @@ const ReadMe = (props:any) => {
             <section>
               <div>
               <h3 className='post'>## POST</h3>
-              <p>##### Url Post: {postUrl}</p>
+              <p className='urls'>##### Url Post: {postUrl}</p>
               <h4>### Request Body</h4>
 
               | Campo | Tipo | Requerido | <br/>
