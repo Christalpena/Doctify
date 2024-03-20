@@ -4,6 +4,15 @@ import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutl
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 export function iterateObjectTable(data: any, postFields: any, setPostFields: any): JSX.Element {
 
   const handleDeleteField = (key: any) => {
@@ -13,24 +22,39 @@ export function iterateObjectTable(data: any, postFields: any, setPostFields: an
   };
 
   return (
-    <>
-    {Object.keys(postFields).map((key: any,index:number) => {
-        return(
-          <tr key={index} id={key}>
-            <td>{key}</td>
-            <td>{typeof data[key]}</td>
-            <td>{postFields[key] === true ? 'Si' : 'No'}</td>
-            <td>
-              <Tooltip title="Eliminar" onClick={() => handleDeleteField(key)}>
-                <IconButton>
-                  <RemoveCircleOutlineRoundedIcon />
-                </IconButton>
-              </Tooltip>
-            </td>
-          </tr>
-          )
-    })}
-    </>);
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Campo</TableCell>
+            <TableCell align="center">Tipo</TableCell>
+            <TableCell align="center">Data</TableCell>
+            <TableCell align="center">Eliminar</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {Object.keys(postFields).map((key) => (
+            <TableRow
+              key={key}
+            >
+              <TableCell align="center" component="th" scope="row">
+                {key}
+              </TableCell>
+              <TableCell align="center">{typeof data[key]}</TableCell>
+              <TableCell align="center">{typeof data[key] === 'boolean' ? 'true' : data[key]}</TableCell>
+              <TableCell align="center">
+                <Tooltip title="Eliminar" onClick={() => handleDeleteField(key)}>
+                  <IconButton>
+                    <RemoveCircleOutlineRoundedIcon />
+                  </IconButton>
+                </Tooltip>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    );
 }
 
 export function iterateObject(data: any,section:string,getFields:any,setRequiredGetFields:any) {
@@ -80,7 +104,7 @@ export function iterateObject(data: any,section:string,getFields:any,setRequired
 export function dataBody(section:string,data:any,body:any){
   return (
       <div>
-          <h4>### Body</h4>
+          {section ? <h4>### Body</h4> : <h4>BODY</h4> }
           <div className='response-list'>
               {section ? <p>```</p> : <></>}
               <span>&#123;</span>
@@ -109,19 +133,26 @@ export function requiredParameters(data: any, url: string, section: string, post
               <>
                   <hr />
                   <h2 className={endPoint}>{endPoint}</h2>
-                  <strong>URL: </strong><span>{url}</span>
-                  <table>
-                      <tbody>
-                          <tr>
-                              <th>Parametro</th>
-                              <th>Tipo</th>
-                          </tr>
-                          <tr>
-                              <th>{parameter}</th>
-                              <th>{typeof data[parameter]}</th>
-                          </tr>
-                      </tbody>
-                  </table>
+                  <p className='urls'><strong>URL: </strong>{url}</p>
+
+
+                  <TableContainer component={Paper}>
+                    <Table aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell align="center">Parametro</TableCell>
+                          <TableCell align="center">Tipo</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                          <TableRow>
+                            <TableCell align="center">{parameter}</TableCell>
+                            <TableCell align="center">{typeof data[parameter]}</TableCell>
+                          </TableRow>
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+
                   {endPoint === 'put' ? 
                   dataBody(section,data,postFields) : 
                   <></>}

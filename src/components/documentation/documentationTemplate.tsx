@@ -20,7 +20,7 @@ const DocumentationTemplate = (props:any) => {
             <div>
               <h2 className='title'>API DOCUMENTATION</h2>
               <h3>Base URL</h3>
-              <h5>{getUrl}</h5>
+              <h5 className='urls'>{getUrl}</h5>
             </div>
             <hr />
             <section className='endPoints'>
@@ -65,7 +65,8 @@ const DocumentationTemplate = (props:any) => {
                 <div>
                     <div className='response-container'>
                         <h2 className='get'>GET</h2>
-                        <strong>URL: </strong><span>{getUrl}</span>
+                        <p className='urls'><strong>URL: </strong>{getUrl}</p>
+
                         <div className='response-list'>
                         <span>&#123;</span>
                         <br />
@@ -86,24 +87,13 @@ const DocumentationTemplate = (props:any) => {
                     <div className='response-container' >
                         <hr />
                         <h2 className='post'>POST</h2>
-                        <strong>URL: </strong><span>{postUrl}</span>
+                        <p className='urls'><strong>URL: </strong>{postUrl}</p>
                         <h3>REQUEST BODY</h3>
 
                         <div>
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Campo</th>
-                                <th>Tipo</th>
-                                <th>Requerido</th>
-                              </tr>
-                            </thead>
-                            <tbody id='tbodyParent'>
                             {iterateObjectTable(data,postFields,setPostFields)}
-                            </tbody>
-                          </table>
-
                         </div>
+                        
                     </div> : <></>}
 
                     { putUrl ?

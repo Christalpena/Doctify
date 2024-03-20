@@ -53,3 +53,32 @@ header ul a li{
 header ul a li:hover{
     font-size: large;
 }
+
+
+@media screen and (max-width: 730px){
+    header{
+        padding: 0px 60px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    header{
+        padding: 0px 40px;
+    }
+}
+
+@media screen and (max-width: 440px){
+    .header-logo{
+        gap: 5px;
+        height: 100px;
+    }
+    
+    .header-logo img{
+        height: 60px;
+    }
+    
+    .header-logo h1{
+        font-size: x-large;
+
+    }
+}
