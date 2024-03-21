@@ -4,7 +4,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DocumentationTemplate from '../documentation/documentationTemplate';
-import ReadMe from '../readme';
+import { lazy } from 'react';
+
+const ReadMe = lazy(() => import('../readme'))
 
 interface TabPanelProps {
   children?: ReactNode;
@@ -43,7 +45,7 @@ export default function BasicTabs(props:any) {
   const [value, setValue] = useState(0);
   const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setGetFields,setRequiredGetFields,postFields,setPostFields,setRequiredPostFields,status} = props
   
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 

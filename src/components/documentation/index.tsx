@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
 import Input from '../elements/input';
-import BasicTabs from '../elements/taps';
 import "./documentationTemplate.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +8,8 @@ import ReportProblemTwoToneIcon from '@mui/icons-material/ReportProblemTwoTone';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
+import { lazy } from 'react';
+const BasicTabs = lazy(() => import('../elements/taps'))
 
 const Api = (props:any) => {
     const {getFields, setGetFields,data,setData,setRequiredGetFields,postFields,setPostFields,setRequiredPostFields} = props
@@ -25,7 +26,6 @@ const Api = (props:any) => {
       );
       
     const notify = () => toast("Documentacion Generada!");
-
 
     const getData = async (url:any,dataPath:any) => {
         try {

@@ -20,6 +20,7 @@ header{
 }
 
 .header-logo img{
+    width: 90px;
     height: 90px;
 }
 
@@ -43,14 +44,14 @@ header ul li{
     font-size:medium;
 
 }
-header ul a {
+header ul li a {
     text-decoration: none;
 }
-header ul a li{
+header ul li a{
     color: white;
     transition: all 0.30s ease-out;
 }
-header ul a li:hover{
+header ul li a:hover{
     font-size: large;
 }
 
@@ -75,6 +76,7 @@ header ul a li:hover{
     
     .header-logo img{
         height: 60px;
+        width: 60px;
     }
     
     .header-logo h1{
