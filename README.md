@@ -13,6 +13,7 @@ Doctify es una aplicación diseñada para simplificar y agilizar el proceso de d
 ## IMPORTANTE ⚠️
 
 Doctify solo le hara una peticion a la URL GET y apartir del objecto de datos que esta retorne se Generara la informacion para los diferentes endPoints.
+Tambien asegurate de que el primer objecto de datos de tu API tenga todos los campos con datos, para que tu documentacion este mejor redactada.
 
 ## Uso 📑
 
