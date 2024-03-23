@@ -1,6 +1,6 @@
 ![Screenshot 2024-03-14 134051](https://github.com/Christalpena/Doctify/assets/107286072/da0c5724-6dd6-4786-8dc9-f617c497e6ce)
 
-Doctify es una aplicación diseñada para simplificar y agilizar el proceso de documentación de tu API REST. Con Doctify, puedes generar documentación detallada y completa para tu API en cuestión de minutos.
+Doctify es una aplicación diseñada para simplificar y agilizar el proceso de documentación de tu API. Con Doctify, puedes generar documentación detallada y completa para tu API en cuestión de minutos.
 
 ## Características 🚀
 
@@ -13,6 +13,7 @@ Doctify es una aplicación diseñada para simplificar y agilizar el proceso de d
 ## IMPORTANTE ⚠️
 
 Doctify solo le hara una peticion a la URL GET y apartir del objecto de datos que esta retorne se Generara la informacion para los diferentes endPoints.
+Tambien asegurate de que el primer objecto de datos de tu API tenga todos los campos con datos, para que tu documentacion este mejor redactada.
 
 ## Uso 📑
 
