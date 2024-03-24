@@ -3,12 +3,13 @@ import { useState } from 'react';
 import Input from '../elements/input';
 import "./documentationTemplate.css"
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
 import ReportProblemTwoToneIcon from '@mui/icons-material/ReportProblemTwoTone';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import { lazy } from 'react';
+import { notify } from './documentationTemplate';
+
 const BasicTabs = lazy(() => import('../elements/taps'))
 
 const Api = (props:any) => {
@@ -19,21 +20,14 @@ const Api = (props:any) => {
     const [putUrl,setPutUrl] = useState();
     const [path,setPath] = useState();
     const [error,setError] = useState();
-    const [status,setStatus] = useState()
-
-    const delay = (ms:number) => new Promise(
-        resolve => setTimeout(resolve, ms)
-      );
+    const [status,setStatus] = useState();
       
-    const notify = () => toast("Documentacion Generada!");
-
     const getData = async (url:any,dataPath:any) => {
         try {
             const response:any = await axios.get(url);
             setStatus(response.status)
             let data = response.data;
             {dataPath ? setData(data[dataPath][0]) : data.length === undefined ? setData(data) : setData(data[0])};
-            await delay(100)
             notify();
         } catch (err:any) {
             setData('')
@@ -67,13 +61,11 @@ const Api = (props:any) => {
                 <Input type={"url"} id={'DELETE'} url={setDeleteUrl}/>
                 <button className='btn' type="submit">Generar Documentacion</button>
                 </form>
-
                 <div className='api-inputs-note'>
                     <h1>Nota</h1>
                     <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
                     <a target='_blank' href='https://github.com/Christalpena/Doctify.git'>¡Mas Informacion aqui!</a>
                 </div>
-
             </section>
            
             { data ?
@@ -91,7 +83,6 @@ const Api = (props:any) => {
                     setPostFields={setPostFields}
                     setRequiredPostFields={setRequiredPostFields}
                     status={status}
-
                 />
             </section> : 
             error ? 
@@ -107,7 +98,6 @@ const Api = (props:any) => {
             </section> :<></>
             }
         </section>
-        <ToastContainer />
         </main>
     )
 }

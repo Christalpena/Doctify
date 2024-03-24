@@ -2,6 +2,9 @@ import { useRef } from 'react';
 import "./documentationTemplate.css"
 import { iterateObjectTable,iterateObject, requiredParameters } from './data';
 import ReactToPrint from "react-to-print";
+import { ToastContainer, toast } from 'react-toastify';
+
+export const notify = () => toast("Documentacion Generada!");
 
 const DocumentationTemplate = (props:any) => {
   
@@ -10,6 +13,7 @@ const DocumentationTemplate = (props:any) => {
 
     return(
         <section>
+        <ToastContainer  />   
           <ReactToPrint
               bodyClass="print-document"
               content={() => ref.current}

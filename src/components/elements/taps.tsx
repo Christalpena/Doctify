@@ -4,9 +4,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DocumentationTemplate from '../documentation/documentationTemplate';
-import { lazy } from 'react';
+import ReadMe from '../readme';
 
-const ReadMe = lazy(() => import('../readme'))
 
 interface TabPanelProps {
   children?: ReactNode;
@@ -75,16 +74,16 @@ export default function BasicTabs(props:any) {
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ReadMe
-          data={data}
-          getUrl={getUrl}
-          putUrl={putUrl}
-          postUrl={postUrl}
-          deleteUrl={deleteUrl}
-          postFields={postFields}
-          getFields={getFields}
-          status={status}
-        />
+          <ReadMe
+            data={data}
+            getUrl={getUrl}
+            putUrl={putUrl}
+            postUrl={postUrl}
+            deleteUrl={deleteUrl}
+            postFields={postFields}
+            getFields={getFields}
+            status={status}
+          />
       </CustomTabPanel>
     </Box>
   );

@@ -20,7 +20,7 @@
     "react-lazy": "^1.1.0",
     "react-router-dom": "^6.22.1",
     "react-to-print": "^2.15.1",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
