@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import "./documentationTemplate.css"
 import { iterateObjectTable,iterateObject, requiredParameters } from './data';
 import ReactToPrint from "react-to-print";
@@ -12,6 +12,9 @@ const DocumentationTemplate = (props:any) => {
     const ref:any = useRef<HTMLDivElement>();
 
     toast.clearWaitingQueue();
+    useEffect(() => {
+        notify();
+    },[data])
 
     return(
         <section>

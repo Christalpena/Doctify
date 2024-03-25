@@ -185,6 +185,7 @@ thead tr th{
 .errorSection h1{
     text-transform: uppercase;
     font-size: xx-large;
+    max-width: 30ch;
 }
 .error__icon{
     font-size:  10rem !important;
@@ -208,19 +209,14 @@ thead tr th{
 
 @media screen and (max-width:730px){
     .home{
-        padding: 0px 60px 60px 60px;
-    }
-    
-}
-
-@media (min-width: 600px){
-    .css-cuefkz-MuiContainer-root {
-        margin: 0;
+        padding: 0px 20px 20px 20px;
     }
 }
 
-@media screen and (max-width: 480px){
-    header{
-        padding: 0px 40px 40px 40px;
+@media screen and (max-width: 600px){
+
+    .errorSection h1{
+        font-size: x-large;
+        max-width: 30ch;
     }
 }

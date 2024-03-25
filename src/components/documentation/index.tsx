@@ -3,12 +3,10 @@ import { useState } from 'react';
 import Input from '../elements/input';
 import "./documentationTemplate.css"
 import 'react-toastify/dist/ReactToastify.css';
-import ReportProblemTwoToneIcon from '@mui/icons-material/ReportProblemTwoTone';
-import IconButton from '@mui/material/IconButton';
+import ReportProblemRoundedIcon from '@mui/icons-material/ReportProblemRounded';import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import ErrorTwoToneIcon from '@mui/icons-material/ErrorTwoTone';
 import { lazy } from 'react';
-import { notify } from './documentationTemplate';
 
 const BasicTabs = lazy(() => import('../elements/taps'))
 
@@ -21,7 +19,6 @@ const Api = (props:any) => {
     const [path,setPath] = useState();
     const [error,setError] = useState();
     const [status,setStatus] = useState();
-    notify();
 
     const getData = async (url:any,dataPath:any) => {
         try {
@@ -29,7 +26,6 @@ const Api = (props:any) => {
             setStatus(response.status)
             let data = response.data;
             {dataPath ? setData(data[dataPath][0]) : data.length === undefined ? setData(data) : setData(data[0])};
-            notify();
         } catch (err:any) {
             setData('')
             setError(err)
@@ -89,8 +85,8 @@ const Api = (props:any) => {
             error ? 
             <section className='errorSection'>
                 <div>
-                    <h1>Hay algun error en la URL por davor revisela</h1>
-                    <ReportProblemTwoToneIcon
+                    <h1>Hay algun error en la URL por favor revisela</h1>
+                    <ReportProblemRoundedIcon
                     color='error'
                     fontSize='large'
                     className='error__icon'
