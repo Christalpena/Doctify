@@ -8,6 +8,7 @@
 
 form{
     margin-bottom: 10px;
+
 }
 
 .api-inputs{
@@ -16,7 +17,7 @@ form{
 }
 .api-inputs h2{
     font-family: var(--secondary-font);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .api-inputs-note{

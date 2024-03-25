@@ -11,13 +11,18 @@
     border-radius: 5px;
 }
 
-.path-input{
-    margin: auto !important;
-}
 .path-input > div{
-    flex-grow: 1;
+    flex-grow: 1 !important;
+    margin: 0% !important;
 }
 
 .tooltip{
     padding: 0 !important;
+}
+
+@media screen and (max-width: 600px){
+    .url-inputs h3{
+        max-width: 6ch;
+        font-size: medium;
+    }
 }
