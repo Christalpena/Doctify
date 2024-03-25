@@ -22,7 +22,7 @@
 
 @media screen and (max-width: 600px){
     .url-inputs h3{
-        max-width: 6ch;
+        max-width: 7ch;
         font-size: medium;
     }
 }
