@@ -21,7 +21,8 @@ const Api = (props:any) => {
     const [path,setPath] = useState();
     const [error,setError] = useState();
     const [status,setStatus] = useState();
-      
+    notify();
+
     const getData = async (url:any,dataPath:any) => {
         try {
             const response:any = await axios.get(url);
@@ -50,7 +51,7 @@ const Api = (props:any) => {
                 <div className='path-input'>
                     <Input type={"text"} id={"PATH"} url={setPath} />
 
-                    <Tooltip title="Dirección o ubicación donde se encuentra la data.">
+                    <Tooltip title="Dirección o ubicación donde se encuentra la data." className='tooltip'>
                         <IconButton>
                             <ErrorTwoToneIcon color='success' />
                         </IconButton>

@@ -11,9 +11,11 @@ const DocumentationTemplate = (props:any) => {
     const {data,getUrl,postUrl,putUrl,deleteUrl,getFields,setRequiredGetFields,postFields,setPostFields,status} = props;
     const ref:any = useRef<HTMLDivElement>();
 
+    toast.clearWaitingQueue();
+
     return(
         <section>
-        <ToastContainer  />   
+        <ToastContainer limit={1}/>   
           <ReactToPrint
               bodyClass="print-document"
               content={() => ref.current}

@@ -52,7 +52,7 @@ export default function BasicTabs(props:any) {
     <Box sx={{ width: 'auto' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"   textColor="secondary"
-        indicatorColor="secondary">
+        indicatorColor="primary">
           <Tab label="PDF" {...a11yProps(0)} />
           <Tab label="README" {...a11yProps(1)} />
         </Tabs>
