@@ -26,7 +26,7 @@ export function iterateObjectTable(data: any, postFields: any, setPostFields: an
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">Campo</TableCell>
+            <TableCell align="center">Campos</TableCell>
             <TableCell align="center">Tipo</TableCell>
             <TableCell align="center">Data</TableCell>
             <TableCell align="center">Eliminar</TableCell>

@@ -58,7 +58,7 @@ const ReadMe = (props:any) => {
           <section>
             <h4>### CAMPOS</h4>
             <div id="readme-content">
-            | Campo | Tipo | Requerido | <br/>
+            | Campos | Tipo | Requerido | <br/>
             | :--- | :---: | ---: |
             {recorrer(data,getFields)} 
           </div>
@@ -80,7 +80,7 @@ const ReadMe = (props:any) => {
               <p className='urls'>##### Url Post: {postUrl}</p>
               <h4>### Request Body</h4>
 
-              | Campo | Tipo | Requerido | <br/>
+              | Campos | Tipo | Requerido | <br/>
               | :--- | :---: | ---: |
               {recorrer(data,postFields)} 
               </div> 

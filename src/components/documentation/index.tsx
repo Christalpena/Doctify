@@ -56,12 +56,12 @@ const Api = (props:any) => {
                 <Input type={"url"} id={'POST'} url={setPostUrl}/>
                 <Input type={"url"} id={'PUT'} url={setPutUrl}/>
                 <Input type={"url"} id={'DELETE'} url={setDeleteUrl}/>
-                <button className='btn' type="submit">Generar Documentacion</button>
+                <button className='btn' type="submit">Generar Documentación</button>
                 </form>
                 <div className='api-inputs-note'>
                     <h1>Nota</h1>
-                    <p>A la unica url que se le estara aplicando una peticion sera a la GET las otras solo se agregaran en el documento y se genera informacion apartir de esta.</p>
-                    <a target='_blank' href='https://github.com/Christalpena/Doctify.git'>¡Mas Informacion aqui!</a>
+                    <p>La única URL a la que se le aplicará una petición será a la url GET. Las otras simplemente se agregarán al documento y se generará información a partir de estas.</p>
+                    <a target='_blank' href='https://github.com/Christalpena/Doctify.git'>¡Más información aquí!</a>
                 </div>
             </section>
            
