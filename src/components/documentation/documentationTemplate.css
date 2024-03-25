@@ -63,6 +63,7 @@ form{
 .urls{
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 .btn{
     width: 100%;
@@ -127,7 +128,6 @@ form{
     margin-bottom: 30px;
 }
 .response-list{
-    margin-top: 1rem;
     background-color: rgba(156, 156, 156, 0.194);
     padding: 2rem;
     border-radius: 20px;
@@ -148,13 +148,15 @@ form{
 }
 
 /*TABLE*/
+
 thead tr th{
     font-weight: bold !important;
 }
 
 .css-11xur9t-MuiPaper-root-MuiTableContainer-root{
-    box-shadow: 0px 0px 1px 0px !important;
-    margin-top: 20px !important;
+    box-shadow: none !important;
+    outline: 0.5px solid;
+    outline-color: rgb(217, 216, 216) !important;
 }
 
 /*PRINT SECTION*/
